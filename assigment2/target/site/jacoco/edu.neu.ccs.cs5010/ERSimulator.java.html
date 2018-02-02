@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ERSimulator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">ERSimulator.java</span></div><h1>ERSimulator.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+
+import org.omg.CORBA.Current;
+
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Scanner;
+
+import static javafx.application.Platform.exit;
+
+/**
+ * Created by xwenfei on 10/2/17.
+ */
+<span class="nc" id="L15">public class ERSimulator {</span>
+<span class="nc" id="L16">    private static MyPriorityQueue&lt;Patient&gt; PatientQueue = new MyPriorityQueue&lt;Patient&gt;();</span>
+<span class="nc" id="L17">    private static MyPriorityQueue&lt;Room&gt; EmptyRoomQueue = new MyPriorityQueue&lt;Room&gt;();</span>
+<span class="nc" id="L18">    private static MyPriorityQueue&lt;Room&gt; OperateRoomQueue = new MyPriorityQueue&lt;Room&gt;();</span>
+<span class="nc" id="L19">    private static MyPriorityQueue&lt;PatientInRoom&gt; OperatePatientQueue = new MyPriorityQueue&lt;PatientInRoom&gt;();</span>
+    private final static int MAX_TIME = 480;
+    private final static int newPatientInfo = 1;
+    private final static int operatePatientInfo = 2;
+    private final static int outPatientInfo = 3;
+
+    /**
+     * @return the room number user has input
+     */
+    public static int getRoomNum(){
+<span class="nc" id="L29">        Scanner scanner = new Scanner(System.in);</span>
+<span class="nc" id="L30">        System.out.println(&quot;Please input the number of room: (must be an integer and lager than 0)&quot;);</span>
+        try {
+<span class="nc bnc" id="L32" title="All 2 branches missed.">            if (scanner.hasNextInt()) {</span>
+
+<span class="nc" id="L34">                int RoomNum = scanner.nextInt();</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">                if(RoomNum &lt;= 0){</span>
+<span class="nc" id="L36">                    throw new IllegalArgumentException(&quot;Room number must be bgger than 0&quot;);</span>
+                }
+<span class="nc" id="L38">                System.out.println(&quot;Room number set: &quot; + RoomNum);</span>
+<span class="nc" id="L39">                return RoomNum;</span>
+
+            } else {
+<span class="nc" id="L42">                throw new IllegalArgumentException(&quot; Input is invalid &quot;);</span>
+            }
+<span class="nc" id="L44">        } catch (IllegalArgumentException | IllegalStateException | ArithmeticException exception) {</span>
+<span class="nc" id="L45">            System.err.println(exception.toString());</span>
+        }
+<span class="nc" id="L47">        System.exit(0);</span>
+<span class="nc" id="L48">        return -1;</span>
+    }
+
+    /**
+     * simulate the operating process
+     * first patient get out of queue
+     * then select the operating room
+     * last put patient in the room
+     */
+    public static void operate(){
+        //let patient from waiting queue to operating queue
+<span class="nc" id="L59">        Patient OperatePatient = PatientQueue.remove();</span>
+
+        //get one of the empty room according to uesd time
+<span class="nc" id="L62">        Room OperateRoom = EmptyRoomQueue.remove();</span>
+
+        //when moving room, the time this room is gonna used is updated right away
+<span class="nc" id="L65">        OperateRoom.updateTimeOccupied(OperatePatient.TreatmentTime);</span>
+<span class="nc" id="L66">        OperateRoomQueue.insert(OperateRoom);</span>
+
+<span class="nc" id="L68">        PatientInRoom patientInRoom = new</span>
+                PatientInRoom(OperatePatient.TreatmentTime, OperatePatient.LeaveTime, OperateRoom);
+<span class="nc" id="L70">        OperatePatientQueue.insert(patientInRoom);</span>
+<span class="nc" id="L71">    }</span>
+
+    /**
+     * simulate the process of patient get cured and get out of hospital
+     * first let patient get of ooperating queue
+     * then let the room be empry again
+     */
+    public static void getOutofHospital(){
+        //let the patient out of queue
+<span class="nc" id="L80">        PatientInRoom patientToGo = OperatePatientQueue.remove();</span>
+
+        //let the room empty again
+<span class="nc" id="L83">        Room emptyRoom = patientToGo.room;</span>
+
+        //insert empty room into empty room queue and remove it from operate queue
+<span class="nc" id="L86">        EmptyRoomQueue.insert(emptyRoom);</span>
+<span class="nc" id="L87">        OperateRoomQueue.PQ.remove(emptyRoom);</span>
+<span class="nc" id="L88">    }</span>
+
+    /**
+     * print the patient info
+     */
+    public static void printInfo(Patient patient, int info){
+<span class="nc bnc" id="L94" title="All 2 branches missed.">        if(info == newPatientInfo){</span>
+<span class="nc" id="L95">            System.out.println(&quot;\nnew patient arrives: &quot;);</span>
+
+        }
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        else if(info == operatePatientInfo){</span>
+<span class="nc" id="L99">            System.out.println(&quot;\npatient goes to operating room: &quot;);</span>
+        }
+<span class="nc" id="L101">        System.out.println(&quot;Urgency: \t&quot; + patient.UrgencyLevel);</span>
+<span class="nc" id="L102">        System.out.println(&quot;Arrival: \t &quot; + patient.ArriveTime);</span>
+<span class="nc" id="L103">        System.out.println(&quot;Treat Time: \t&quot; + patient.TreatmentTime);</span>
+<span class="nc" id="L104">    }</span>
+
+    /**
+     * print the patient info
+     */
+    public static void printInfo(PatientInRoom patient, int info){
+<span class="nc bnc" id="L110" title="All 2 branches missed.">        if(info == outPatientInfo){</span>
+<span class="nc" id="L111">            System.out.println(&quot;\npatient cured, go home: &quot;);</span>
+<span class="nc" id="L112">            System.out.println(&quot;Treat Time: \t&quot; + patient.TreatmentTime);</span>
+<span class="nc" id="L113">            System.out.println(&quot;Leaving time: \t&quot; + patient.LeavingTime);</span>
+        }
+<span class="nc" id="L115">    }</span>
+
+    public static void main(String[] args) throws Exception {
+
+<span class="nc" id="L119">        Generator generator = new Generator();</span>
+
+        //first get the Room number and create the room queue
+<span class="nc" id="L122">        int RoomNum = getRoomNum();</span>
+<span class="nc bnc" id="L123" title="All 2 branches missed.">        for(int i = 0; i &lt; RoomNum; i++){</span>
+<span class="nc" id="L124">            EmptyRoomQueue.insert(new Room());</span>
+        }
+
+        //simualtion begins here, use 3 time to control the simulation
+<span class="nc" id="L128">        LocalDateTime StartTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);</span>
+<span class="nc" id="L129">        LocalDateTime CurrentTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);</span>
+<span class="nc" id="L130">        LocalDateTime EndTime = StartTime.plusMinutes(MAX_TIME);</span>
+<span class="nc" id="L131">        Patient RandomPatient = generator.newPatient(CurrentTime, Patient.MAX_Treatment);</span>
+
+        //
+<span class="nc bnc" id="L134" title="All 2 branches missed.">        while(CurrentTime.isBefore(EndTime)){</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">            if(RandomPatient.ArriveTime.isBefore(EndTime)){</span>
+<span class="nc" id="L136">                PatientQueue.insert(RandomPatient);</span>
+<span class="nc" id="L137">                printInfo(RandomPatient, newPatientInfo);</span>
+            }
+
+
+<span class="nc bnc" id="L141" title="All 4 branches missed.">            if(!EmptyRoomQueue.isEmpty() &amp;&amp; !PatientQueue.isEmpty()){</span>
+<span class="nc" id="L142">                printInfo(PatientQueue.front(), operatePatientInfo);</span>
+<span class="nc" id="L143">                operate();</span>
+            }
+
+<span class="nc" id="L146">            CurrentTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">            if(RandomPatient.ArriveTime.isBefore(EndTime)){</span>
+<span class="nc" id="L148">                RandomPatient = generator.newPatient(RandomPatient.ArriveTime, Patient.MAX_Treatment);</span>
+            }
+<span class="nc bnc" id="L150" title="All 4 branches missed.">            if(!OperatePatientQueue.isEmpty() &amp;&amp; CurrentTime.isAfter(OperatePatientQueue.front().LeavingTime)){</span>
+<span class="nc" id="L151">                printInfo(OperatePatientQueue.front(), outPatientInfo);</span>
+<span class="nc" id="L152">                getOutofHospital();</span>
+            }
+
+        }
+
+<span class="nc" id="L157">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

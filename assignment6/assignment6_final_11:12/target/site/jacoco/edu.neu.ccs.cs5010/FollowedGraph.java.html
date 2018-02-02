@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>FollowedGraph.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">FollowedGraph.java</span></div><h1>FollowedGraph.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+/**
+ * The type Followed graph.
+ */
+<span class="fc" id="L11">public class FollowedGraph implements IGraph {</span>
+    private int usersNum;
+    private int edgesNum;
+    private UserVertex[] vertexNodeList;
+
+    /**
+     * Create followed graph.
+     *
+     * @param userList user array generated in GetUserInfo class getInfo method.
+     * @param edge     edge List generated in GetUserInfo class getEdge method.
+     * @throws IOException this method generates the graph contains the information about who follows each user
+     */
+    public UserVertex[] createFollowedGraph(Users[] userList,List&lt;int[]&gt; edge) throws IOException {
+
+<span class="fc" id="L25">        usersNum = userList.length;</span>
+<span class="fc" id="L26">        edgesNum = edge.size();</span>
+
+<span class="fc" id="L28">        vertexNodeList = new UserVertex[usersNum];</span>
+        //build the vertex list
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for(int i = 0; i &lt; usersNum; i++) {</span>
+<span class="fc" id="L31">            vertexNodeList[i] = new UserVertex();</span>
+<span class="fc" id="L32">            vertexNodeList[i].user = userList[i];</span>
+<span class="fc" id="L33">            vertexNodeList[i].firstEdge = null;</span>
+        }
+
+        //create adjacency list
+<span class="fc bfc" id="L37" title="All 2 branches covered.">        for(int i = 0; i &lt; edgesNum; i++) {</span>
+<span class="fc" id="L38">            Edges edgeNode = new Edges();</span>
+<span class="fc" id="L39">            int follower = getIDNumber(edge.get(i)[0],userList);</span>
+<span class="fc" id="L40">            int followed = getIDNumber(edge.get(i)[1],userList);</span>
+<span class="pc bpc" id="L41" title="1 of 4 branches missed.">            if(followed &lt;= 0 || follower &lt;= 0){continue;}</span>
+            /*get the position of the one to be folloed in the edge file*/
+
+<span class="fc" id="L44">            edgeNode.adjVertexID = follower;</span>
+<span class="fc" id="L45">            edgeNode.next = vertexNodeList[followed-1].firstEdge;</span>
+<span class="fc" id="L46">            vertexNodeList[followed-1].firstEdge = edgeNode;</span>
+        }
+<span class="fc" id="L48">        return vertexNodeList;</span>
+    }
+    @Override
+    public int getVexNum() {
+<span class="fc" id="L52">        return usersNum;</span>
+    }
+
+    @Override
+    public int getEdgeNum() {
+<span class="fc" id="L57">        return edgesNum;</span>
+    }
+
+    @Override
+    public Users getVexElement(UserVertex vertex) throws Exception {
+<span class="nc" id="L62">        return vertex.user;</span>
+    }
+
+    /**
+     * Get vetex list user vertex [ ].
+     *
+     * @return the user vertex [ ]
+     */
+    public UserVertex[] getVetexList() {
+<span class="nc" id="L71">        UserVertex[] copy = vertexNodeList;</span>
+<span class="nc" id="L72">        return copy;</span>
+    }
+
+    /**
+     * Gets id number.
+     *
+     * @param idNum    the ID number of the user that this vertex include
+     * @param userList the vertex list return by getInfo method in GetUserInfo class
+     * @return return the edges position
+     */
+    public int getIDNumber(int idNum, Users[] userList) {
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        for(int i = 0; i &lt; usersNum; i++) {</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">            if(userList[i].getUsersID() == idNum) {</span>
+<span class="fc" id="L85">                return userList[i].getUsersID();</span>
+            }
+        }
+<span class="fc" id="L88">        return -1;</span>
+    }
+
+    /**
+     * print the graph built.
+     */
+    /*public void printGraph(){
+        System.out.println(&quot;Graph:\n&quot;);
+        for (int i = 0; i &lt; usersNum; i++) {
+            System.out.print(vertexNodeList[i].user.getUsersID() + &quot;--&gt;&quot;);
+            if (vertexNodeList[i].firstEdge != null) {
+                Edges mEdgeNode = vertexNodeList[i].firstEdge;
+                System.out.print(&quot;[&quot; + mEdgeNode.adjVertexID + &quot;]&quot; + &quot; &quot;);
+                while (mEdgeNode.next != null) {
+                    mEdgeNode = mEdgeNode.next;
+                    System.out.print(&quot;[&quot; + mEdgeNode.adjVertexID + &quot;]&quot; + &quot; &quot;);
+                }
+                System.out.print(&quot;\n&quot;);
+            } else {
+                System.out.print(&quot;\n&quot;);
+            }
+        }
+    }*/
+
+    /**
+     * Count followers hash set.
+     *
+     * @param userVertex the user vertex
+     * @return the list contains each users followers hashset
+     */
+    public HashSet&lt;Integer&gt; countFollowers(UserVertex userVertex){
+        //use HashSet to count the followers because there are same followers ID follow some user in the file
+<span class="fc" id="L120">        HashSet&lt;Integer&gt; followerSet = new HashSet&lt;&gt;();</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">            if(userVertex.firstEdge != null){</span>
+<span class="fc" id="L122">                 Edges mEdgeNode = userVertex.firstEdge;</span>
+<span class="fc" id="L123">                 followerSet.add(userVertex.getUserID());</span>
+<span class="fc bfc" id="L124" title="All 2 branches covered.">                 while(mEdgeNode.next != null){</span>
+<span class="fc" id="L125">                     mEdgeNode = mEdgeNode.next;</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">                     if(followerSet.contains(mEdgeNode.getadjVex())){</span>
+<span class="fc" id="L127">                         continue;</span>
+                     }
+<span class="fc" id="L129">                     followerSet.add(mEdgeNode.getadjVex());//add each followers into hashset</span>
+                 }
+            }
+
+            //System.out.println(userVertex.getUserID() + &quot;----&gt;&quot; + followerSet);
+<span class="fc" id="L134">        return followerSet;</span>
+    }
+
+    /**
+     * Getfollower list list.
+     *
+     * @param userVertex the vertex node which contains users information
+     * @return folloers list of this user in this uservertex
+     */
+    public List&lt;Integer&gt; getfollowerList(UserVertex userVertex){
+<span class="fc" id="L144">        List&lt;Integer&gt; list = new ArrayList(countFollowers(userVertex));</span>
+<span class="fc" id="L145">        return list;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>TestOnly.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">TestOnly.java</span></div><h1>TestOnly.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.Random;
+
+/**
+ * Created by wenfei on 10/29/17.
+ */
+<span class="nc" id="L10">public class TestOnly {</span>
+    public static final int bound = 64;
+    public static void main(String[] args) {
+
+<span class="nc bnc" id="L14" title="All 2 branches missed.">        for (int i = 0; i &lt; 100; i++) {</span>
+            //System.out.println(s.nextInt(11));
+        }
+
+<span class="nc" id="L18">        Random rnd = new Random();</span>
+<span class="nc" id="L19">        RandomNumber rd = new RandomNumber();</span>
+        BigInteger bi;
+        BigInteger bi2;
+        BigInteger phi;
+        BigInteger n;
+
+<span class="nc bnc" id="L25" title="All 2 branches missed.">        for (int i = 0; i &lt; 100; i++) {</span>
+<span class="nc" id="L26">            bi = new BigInteger(bound, 10000, rnd);</span>
+<span class="nc" id="L27">            bi2 = new BigInteger(bound,10000, rnd);</span>
+<span class="nc" id="L28">            phi = bi.subtract(BigInteger.ONE).multiply(bi2.subtract(BigInteger.ONE));</span>
+<span class="nc" id="L29">            n = bi.multiply(bi2);</span>
+            //System.out.println(phi.toString());
+            //System.out.println(n.toString());
+
+            //System.out.println(rnd);
+            //System.out.println(bi.toString());
+<span class="nc bnc" id="L35" title="All 2 branches missed.">            if (!bi.isProbablePrime(10000)) {</span>
+<span class="nc" id="L36">                System.out.println(&quot;wrong prime number&quot;);</span>
+            }
+
+        }
+
+<span class="nc" id="L41">        BigInteger ss = new BigInteger(&quot;3423532314342&quot;);</span>
+<span class="nc" id="L42">        BigInteger xx = new BigInteger(&quot;3532523455435&quot;);</span>
+<span class="nc" id="L43">        BigInteger pp = ss.subtract(BigInteger.ONE).multiply(xx.subtract(BigInteger.ONE));</span>
+
+<span class="nc" id="L45">        System.out.println(pp.mod(xx));</span>
+
+
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        for (int i = 0; i &lt; 100; i++) {</span>
+<span class="nc" id="L49">            BigInteger sss = new BigInteger(bound, rnd);</span>
+            //System.out.println(sss);
+        }
+
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        for (int i = 0; i &lt; 100; i++) {</span>
+<span class="nc" id="L54">            SecureRandom s = new SecureRandom();</span>
+<span class="nc" id="L55">            float qqq = s.nextFloat();</span>
+            //System.out.println(qqq);
+        }
+
+<span class="nc" id="L59">        ss = new BigInteger(&quot;3&quot;);</span>
+<span class="nc" id="L60">        pp = new BigInteger(&quot;20&quot;);</span>
+<span class="nc" id="L61">        xx = ss.modInverse(pp);</span>
+<span class="nc" id="L62">        System.out.println(xx.toString());</span>
+
+
+<span class="nc" id="L65">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

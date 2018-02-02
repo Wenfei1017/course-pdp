@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.3.5" timestamp="2017-12-11T22:47:16.693">
+<file name="/Users/wangxiao/Documents/GitHub/pdp-xwenfei/assignment3/src/main/java/edu/neu/ccs/cs5010/EmailGenerator.java">
+<violation beginline="92" endline="92" begincolumn="14" endcolumn="17" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="Date" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Date' starts with uppercase character.
+</violation>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-xwenfei/assignment3/src/main/java/edu/neu/ccs/cs5010/Generator.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="34" rule="UnusedImports" ruleset="Import Statements" package="edu.neu.ccs.cs5010" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.text.SimpleDateFormat'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="edu.neu.ccs.cs5010" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.Date'
+</violation>
+<violation beginline="76" endline="101" begincolumn="12" endcolumn="9" rule="IfElseStmtsMustUseBraces" ruleset="Braces" package="edu.neu.ccs.cs5010" class="Generator" method="getInput" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/braces.html#IfElseStmtsMustUseBraces" priority="3">
+Avoid using if...else statements without curly braces
+</violation>
+</file>
+</pmd>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.3.5" timestamp="2017-11-19T16:00:36.946">
+<file name="/Users/wangxiao/Documents/GitHub/pdp-test/assignment7/src/main/java/edu/neu/ccis/cs5010/assignment7/Hour.java">
+<violation beginline="6" endline="6" begincolumn="17" endcolumn="25" rule="AvoidFieldNameMatchingTypeName" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="Hour" variable="hour" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#AvoidFieldNameMatchingTypeName" priority="3">
+It is somewhat confusing to have a field name matching the declaring class name
+</violation>
+<violation beginline="7" endline="7" begincolumn="29" endcolumn="33" rule="UnusedPrivateField" ruleset="Unused Code" package="edu.neu.ccis.cs5010.assignment7" class="Hour" variable="queue" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'queue'.
+</violation>
+<violation beginline="8" endline="8" begincolumn="30" endcolumn="36" rule="UnusedPrivateField" ruleset="Unused Code" package="edu.neu.ccis.cs5010.assignment7" class="Hour" variable="liftIds" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'liftIds'.
+</violation>
+<violation beginline="17" endline="17" begincolumn="49" endcolumn="50" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="Hour" method="compare" variable="o1" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like o1
+</violation>
+<violation beginline="17" endline="17" begincolumn="58" endcolumn="59" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="Hour" method="compare" variable="o2" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like o2
+</violation>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-test/assignment7/src/main/java/edu/neu/ccis/cs5010/assignment7/HourThread.java">
+<violation beginline="71" endline="71" begincolumn="41" endcolumn="62" rule="IfStmtsMustUseBraces" ruleset="Braces" package="edu.neu.ccis.cs5010.assignment7" class="HourThread" method="run" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/braces.html#IfStmtsMustUseBraces" priority="3">
+Avoid using if statements without curly braces
+</violation>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-test/assignment7/src/main/java/edu/neu/ccis/cs5010/assignment7/Lift.java">
+<violation beginline="4" endline="4" begincolumn="21" endcolumn="22" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="Lift" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+<violation beginline="7" endline="7" begincolumn="25" endcolumn="26" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="Lift" method="Lift" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-test/assignment7/src/main/java/edu/neu/ccis/cs5010/assignment7/LiftThread.java">
+<violation beginline="41" endline="41" begincolumn="37" endcolumn="38" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="LiftThread" method="run" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-test/assignment7/src/main/java/edu/neu/ccis/cs5010/assignment7/SkiDataProcessor.java">
+<violation beginline="111" endline="111" begincolumn="70" endcolumn="71" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="SkiDataProcessor" method="compare" variable="o1" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like o1
+</violation>
+<violation beginline="111" endline="111" begincolumn="100" endcolumn="101" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="SkiDataProcessor" method="compare" variable="o2" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like o2
+</violation>
+<violation beginline="124" endline="124" begincolumn="37" endcolumn="38" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="SkiDataProcessor" method="outputSkier" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+<violation beginline="132" endline="132" begincolumn="33" endcolumn="55" rule="IfStmtsMustUseBraces" ruleset="Braces" package="edu.neu.ccis.cs5010.assignment7" class="SkiDataProcessor" method="outputSkier" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/braces.html#IfStmtsMustUseBraces" priority="3">
+Avoid using if statements without curly braces
+</violation>
+<violation beginline="150" endline="150" begincolumn="37" endcolumn="38" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="SkiDataProcessor" method="outputLift" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+<violation beginline="196" endline="196" begincolumn="41" endcolumn="62" rule="IfStmtsMustUseBraces" ruleset="Braces" package="edu.neu.ccis.cs5010.assignment7" class="SkiDataProcessor" method="outputHour" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/braces.html#IfStmtsMustUseBraces" priority="3">
+Avoid using if statements without curly braces
+</violation>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-test/assignment7/src/main/java/edu/neu/ccis/cs5010/assignment7/Skier.java">
+<violation beginline="4" endline="4" begincolumn="21" endcolumn="22" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="Skier" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+<violation beginline="7" endline="7" begincolumn="26" endcolumn="27" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="Skier" method="Skier" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-test/assignment7/src/main/java/edu/neu/ccis/cs5010/assignment7/SkierThread.java">
+<violation beginline="36" endline="36" begincolumn="72" endcolumn="73" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="SkierThread" method="compare" variable="o1" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like o1
+</violation>
+<violation beginline="36" endline="36" begincolumn="104" endcolumn="105" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="SkierThread" method="compare" variable="o2" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like o2
+</violation>
+<violation beginline="49" endline="49" begincolumn="45" endcolumn="46" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccis.cs5010.assignment7" class="SkierThread" method="run" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+</file>
+</pmd>

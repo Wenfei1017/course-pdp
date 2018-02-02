@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>EmailGenerator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">EmailGenerator.java</span></div><h1>EmailGenerator.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * created by xwenfei on 10/08
+ */
+
+<span class="fc" id="L13">public class EmailGenerator {</span>
+    // Constant that determines firstname, lastname,street,city,county,state,zip number, phone number
+    //email and rewards.
+    public static final int FirstNameNo = 1;
+    public static final int LastNameNo = 2;
+    public static final int StreetNo = 3;
+    public static final int CityNo = 4;
+    public static final int CountyNo = 5;
+    public static final int StateNo = 6;
+    public static final int ZipNo=7;
+    public static final int PhoNo = 8;
+    public static final int EmailNo = 9;
+    public static final int RewardsNo = 10;
+
+    /**
+     * create the output folder, if existed or failed, print the information
+     */
+    public static void createFileDir(String dirName) throws IOException {
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if(dirName == null){</span>
+<span class="nc" id="L32">            throw new IllegalArgumentException(&quot;Output direction name should not be null&quot;);</span>
+        }
+<span class="fc" id="L34">        File OutFile = new File(dirName);</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if(OutFile.mkdir()){</span>
+<span class="nc" id="L36">            System.out.println(&quot;Completed Emails saved in &quot; + dirName);</span>
+        }
+        else{
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">            if(OutFile.exists()){</span>
+<span class="fc" id="L40">                System.out.println(dirName + &quot;folder already exists&quot;);</span>
+            } else{
+<span class="nc" id="L42">                throw new IOException(&quot;Fail creating the folder &quot; + dirName);</span>
+            }
+        }
+<span class="fc" id="L45">    }</span>
+    /**
+     * return the template file as String format
+     */
+    public static String getTemplateEmail(String templateFile) throws IOException {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if(templateFile == null){</span>
+<span class="nc" id="L51">            throw new IllegalArgumentException(&quot;Template file should not be null&quot;);</span>
+        }
+<span class="nc" id="L53">        BufferedReader reader = new BufferedReader(new FileReader (templateFile));</span>
+<span class="nc" id="L54">        String line = null;</span>
+<span class="nc" id="L55">        StringBuilder stringBuilder = new StringBuilder();</span>
+<span class="nc" id="L56">        String ls = System.getProperty(&quot;line.separator&quot;);</span>
+
+        try {
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            while((line = reader.readLine()) != null) {</span>
+<span class="nc" id="L60">                stringBuilder.append(line);</span>
+<span class="nc" id="L61">                stringBuilder.append(ls);</span>
+            }
+<span class="nc" id="L63">            return stringBuilder.toString();</span>
+        } finally {
+<span class="nc" id="L65">            reader.close();</span>
+        }
+    }
+
+    /**
+     * @return according to certain customer, change the email contents
+     * and return the correct email in String format
+     */
+    public static String matchEmail(Customer customer, String event, String templateFile, String csvFile) throws IOException {
+<span class="nc" id="L74">        String TemplateEmail = getTemplateEmail(templateFile);</span>
+<span class="nc" id="L75">        String Email = TemplateEmail;</span>
+<span class="nc" id="L76">        Pattern DepartPattern = Pattern.compile(&quot;From.*To&quot;);</span>
+<span class="nc" id="L77">        Pattern DestPattern = Pattern.compile(&quot;To.*.csv&quot;);</span>
+<span class="nc" id="L78">        Matcher DepartMatcher = DepartPattern.matcher(csvFile);</span>
+<span class="nc" id="L79">        Matcher DestMatcher = DestPattern.matcher(csvFile);</span>
+
+<span class="nc bnc" id="L81" title="All 4 branches missed.">        if(DepartMatcher.find() &amp;&amp; DestMatcher.find()){</span>
+<span class="nc" id="L82">            String DepartCity = DepartMatcher.group();</span>
+<span class="nc" id="L83">            DepartCity = DepartCity.substring(&quot;From&quot;.length(), DepartCity.length() - &quot;To&quot;.length());</span>
+<span class="nc" id="L84">            String DestCity = DestMatcher.group();</span>
+<span class="nc" id="L85">            DestCity = DestCity.substring(&quot;To&quot;.length(), DestCity.length() - &quot;.csv&quot;.length());</span>
+
+            Pattern EmailPattern;
+            Matcher EmailMatcher;
+<span class="nc" id="L89">            Date date = new Date();</span>
+<span class="nc" id="L90">            SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy.MM.dd&quot;);</span>
+<span class="nc" id="L91">            String Date = sdf.format(date).toString();</span>
+<span class="nc" id="L92">            String[] ToReplace = {&quot;Date&quot;, &quot;email&quot;, &quot;event&quot;, &quot;first_name&quot;, &quot;last_name&quot;,</span>
+                    &quot;departure-city&quot;, &quot;destination-city&quot;, &quot;rewards&quot;};
+<span class="nc" id="L94">            String[] ToFill = {Date, customer.getEmail(), event, customer.getFirstName(),</span>
+<span class="nc" id="L95">                    customer.getLastName(), DepartCity, DestCity, customer.getRewards()};</span>
+<span class="nc" id="L96">            int index= 0;</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">            for(String str: ToReplace){</span>
+<span class="nc" id="L98">                EmailPattern = Pattern.compile(&quot;\\[\\[&quot; + str + &quot;\\]\\]&quot;);</span>
+<span class="nc" id="L99">                EmailMatcher = EmailPattern.matcher(Email);</span>
+<span class="nc" id="L100">                Email = EmailMatcher.replaceAll(ToFill[index]);</span>
+<span class="nc" id="L101">                index++;</span>
+            }
+        }
+<span class="nc" id="L104">        return Email;</span>
+    }
+
+    /**
+     * write the correct email and save it
+     */
+    public static void saveEmail(Customer customer, String dirName, String templateFile,
+                                 int cusNo, String event, String csvFile) throws Exception {
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        if(customer == null){</span>
+<span class="nc" id="L113">            throw new IllegalArgumentException(&quot;customer should not be null&quot;);</span>
+        }
+<span class="nc" id="L115">        FileWriter Writer = null;</span>
+<span class="nc" id="L116">        String Email = null;</span>
+
+        try{
+<span class="nc" id="L119">            Writer = new FileWriter(dirName + &quot;/&quot; + &quot;Email_&quot; + cusNo + &quot;_&quot; + customer.getFirstName() + &quot;.txt&quot;);</span>
+<span class="nc" id="L120">            Email = matchEmail(customer, event, templateFile, csvFile);</span>
+<span class="nc" id="L121">            Writer.write(Email);</span>
+
+<span class="nc" id="L123">        } catch(IOException e){</span>
+<span class="nc" id="L124">            e.getStackTrace();</span>
+        } finally{
+<span class="nc bnc" id="L126" title="All 6 branches missed.">            if(Writer != null){</span>
+                try{
+<span class="nc" id="L128">                    Writer.close();</span>
+<span class="nc" id="L129">                } catch (IOException e){</span>
+<span class="nc" id="L130">                    e.getStackTrace();</span>
+<span class="nc" id="L131">                }</span>
+            }
+        }
+
+<span class="nc" id="L135">    }</span>
+
+    /**
+     * main process, get input and read customer info
+     * and use saveEmail to create correct email
+     */
+    public static void mailAutomation(String csvFile, String dirName, String event, String templateFile) throws Exception{
+<span class="nc" id="L142">        createFileDir(dirName);</span>
+<span class="nc" id="L143">        String line = &quot;&quot;;</span>
+
+<span class="nc" id="L145">        Pattern pattern = Pattern.compile(&quot;\&quot;,\&quot;|\&quot;&quot;);//&quot;,&quot; or &quot;</span>
+        Customer customer;
+        Address address;
+<span class="nc" id="L148">        BufferedReader bufReader = null;</span>
+<span class="nc" id="L149">        String[] Info = null;</span>
+<span class="nc" id="L150">        bufReader = new BufferedReader(new FileReader(csvFile));</span>
+
+        try {
+<span class="nc" id="L153">            line = bufReader.readLine();</span>
+<span class="nc" id="L154">            int CusNo = 1;</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">            while ((line = bufReader.readLine()) != null) {</span>
+
+<span class="nc" id="L157">                Info = pattern.split(line);</span>
+<span class="nc bnc" id="L158" title="All 2 branches missed.">                if(Info.length &gt; 11){</span>
+                    //the first element is space
+<span class="nc" id="L160">                    System.out.println(Info.length);</span>
+<span class="nc" id="L161">                    throw new Exception(&quot;Wrong format of customer file&quot;);</span>
+                }
+<span class="nc" id="L163">                address = new Address(Info[StreetNo], Info[CityNo], Info[CountyNo], Info[StateNo], Info[ZipNo]);</span>
+<span class="nc" id="L164">                customer = new Customer(Info[FirstNameNo],</span>
+                        Info[LastNameNo], address, Info[PhoNo], Info[EmailNo], Info[RewardsNo]);
+                //customer.printCustomer();
+<span class="nc" id="L167">                saveEmail(customer, dirName, templateFile, CusNo, event, csvFile);</span>
+<span class="nc" id="L168">                CusNo++;</span>
+            }
+
+<span class="nc" id="L171">        } catch(FileNotFoundException fnfe){</span>
+<span class="nc" id="L172">            fnfe.printStackTrace();</span>
+<span class="nc" id="L173">        } catch (IOException e) {</span>
+<span class="nc" id="L174">            e.printStackTrace();</span>
+        } finally{
+<span class="nc bnc" id="L176" title="All 8 branches missed.">            if(bufReader != null){</span>
+                try{
+<span class="nc" id="L178">                    bufReader.close();</span>
+<span class="nc" id="L179">                }catch(IOException e){</span>
+<span class="nc" id="L180">                    e.getStackTrace();</span>
+<span class="nc" id="L181">                }</span>
+            }
+        }
+<span class="nc" id="L184">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

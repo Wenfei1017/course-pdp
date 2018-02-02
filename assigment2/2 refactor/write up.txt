@@ -1,0 +1,9 @@
+I refactor the whole project. First there are many naming warnings. The correct naming should have the form  '^[a-z][a-z0-9][a-zA-Z0-9]*$'
+Then I changed all the names that hava warnings. Also I changed all the usage of whitespace.
+When I run maven, I find the test coverage is very small. So I rewrite most of the tests.
+
+The test for exception is hard at first so I google and learned to use import org.junit.Rule to handle exception in test, which increase 
+the coverage significantly. However, there still are some lines that I donn't know how to reach. Also, the branch missing is kind of tricky to handle.
+
+In the main class ERSimulator, I mainly rewrite the old main method. I take it apart because main is hard to test because of the System.in.
+Also, the old getRoomNum requires System.in, which makes it hard to test. So I add parameter "InputStream inputStream" to make it possible for testing. But again, I still don't know how to test some try catch sentences.

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>SecureBankVerificationSimulator xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../apidocs/edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> edu.neu.ccs.cs5010;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.io.FileNotFoundException;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> java.math.BigInteger;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> java.util.ArrayList;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.util.HashMap;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_javadoccomment"> * Created by wenfei on 10/30/17.</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../edu/neu/ccs/cs5010/SecureBankVerificationSimulator.html">SecureBankVerificationSimulator</a> {
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> clientsNumberIndex = 0;
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> verificationNumbertIndex = 1;
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> fractionIndex = 2;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> HashMap&lt;Integer, Client&gt; clientData;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> HashMap&lt;Integer, Client&gt; clientBankData;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> ArrayList&lt;BigInteger[]&gt; rawPairs;
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> ArrayList&lt;Integer&gt; clientIDArray;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_javadoccomment">     * Generate and store all clients, both clients itself and the clients in bank.</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_javadoccomment">     * Also, store all the ID information in an array.</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> generateClients(<strong class="jxr_keyword">int</strong> clientsNumber) {
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <a href="../../../../edu/neu/ccs/cs5010/ClientGenerator.html">ClientGenerator</a> clientGenerator = <strong class="jxr_keyword">new</strong> <a href="../../../../edu/neu/ccs/cs5010/ClientGenerator.html">ClientGenerator</a>(clientsNumber);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          clientData = clientGenerator.generateClientData();
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          <a href="../../../../edu/neu/ccs/cs5010/Client.html">Client</a> client;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          <strong class="jxr_keyword">for</strong> (Map.Entry&lt;Integer, Client&gt; entry: clientData.entrySet()) {
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>              client = entry.getValue();
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>              client.deletePrivateKey();
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>              clientBankData.put(entry.getKey(), client);
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>              clientIDArray.add(client.getClientID());
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>          }
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      }
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * Generate message &amp; signature pairs</em>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> generatePairs(<strong class="jxr_keyword">int</strong> pairNumber, <strong class="jxr_keyword">float</strong> fraction) {
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          BigInteger[] pair;
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <a href="../../../../edu/neu/ccs/cs5010/Client.html">Client</a> client = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          <a href="../../../../edu/neu/ccs/cs5010/PairGenerator.html">PairGenerator</a> pairGenerator = <strong class="jxr_keyword">new</strong> <a href="../../../../edu/neu/ccs/cs5010/PairGenerator.html">PairGenerator</a>();
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; pairNumber; i++) {
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>              pair = pairGenerator.generatePairs(fraction, client);
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>              rawPairs.add(pair);
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          }
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>      }
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * Read command line and set the neighbor.</em>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     * add all the candy from historical data</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> simulate(String[] commandLine) {
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          <strong class="jxr_keyword">int</strong> clientsNumber = Integer.parseInt(commandLine[clientsNumberIndex]);
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <strong class="jxr_keyword">int</strong> pairNumber = Integer.parseInt(commandLine[verificationNumbertIndex]);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          <strong class="jxr_keyword">float</strong> fraction = Integer.parseInt(commandLine[fractionIndex]);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          generateClients(clientsNumber);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          generatePairs(pairNumber, fraction);
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      }
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>  
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>  <em class="jxr_javadoccomment">     * Main method, get command line from the user.</em>
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          String[] testLine = {<span class="jxr_string">"200"</span>, <span class="jxr_string">"200"</span>, <span class="jxr_string">"0.2"</span>, <span class="jxr_string">"output.txt"</span>};
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>          simulate(testLine);
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      }
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2017. All rights reserved.</div>
+</body>
+</html>

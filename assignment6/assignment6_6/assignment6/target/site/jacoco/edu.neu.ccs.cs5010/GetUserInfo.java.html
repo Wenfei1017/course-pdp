@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>GetUserInfo.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">GetUserInfo.java</span></div><h1>GetUserInfo.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * The type Get user info.
+ */
+<span class="fc" id="L11">public class GetUserInfo {</span>
+    private final static int USERSID = 0;
+    private final static int DATE = 1;
+    private final static int GENDER = 2;
+    private final static int USERSAGE = 3;
+    private final static int CITY = 4;
+
+    /**
+     * Get info users [ ].
+     *
+     * @param csvFile        the file which store the information of each users
+     * @param processingFlag the processing flag
+     * @return a list store the vertex as Listnode
+     * @throws NumberFormatException the number format exception
+     * @throws IOException           the io exception
+     */
+    public Users[] getInfo(String csvFile, String processingFlag) throws NumberFormatException, IOException {
+<span class="fc" id="L28">        List&lt;Users&gt; usersList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L29">        Users[] users = null;</span>
+        String [] userInfo;
+        String line;
+<span class="fc" id="L32">        InputStream inputStream = new FileInputStream(csvFile);</span>
+<span class="fc" id="L33">        Reader rder = new InputStreamReader(inputStream, &quot;UTF-8&quot;);</span>
+<span class="fc" id="L34">        BufferedReader reader = new BufferedReader(rder);</span>
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if(csvFile == null){</span>
+<span class="nc" id="L36">            throw new IllegalArgumentException(&quot;File should not be null&quot;);</span>
+        }
+        try{
+<span class="pc bpc" id="L39" title="1 of 4 branches missed.">            while((line = reader.readLine()) != null &amp;&amp; line.length() &gt; 0){</span>
+<span class="fc" id="L40">            userInfo = line.split(&quot;,&quot;);</span>
+            //create a new user based on the information read
+<span class="fc" id="L42">            int userID = Integer.parseInt(userInfo[USERSID]);</span>
+<span class="fc" id="L43">            Users thisUser = new Users(userID,userInfo[DATE],userInfo[GENDER],userInfo[USERSAGE],userInfo[CITY]);</span>
+
+<span class="fc" id="L45">            usersList.add(thisUser);</span>
+<span class="fc" id="L46">            }</span>
+<span class="pc bpc" id="L47" title="1 of 2 branches missed.">            if(processingFlag.equals(&quot;e&quot;)) {</span>
+<span class="nc" id="L48">                Collections.reverse(usersList);</span>
+            }
+<span class="pc bpc" id="L50" title="1 of 2 branches missed.">            else if(processingFlag.equals(&quot;r&quot;)) {</span>
+<span class="nc" id="L51">                Collections.shuffle(usersList);</span>
+            }
+            //transfer list to array here
+<span class="fc" id="L54">            users = new Users[usersList.size()];</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            for(int i = 0; i &lt; usersList.size(); i++){</span>
+<span class="fc" id="L56">                users[i] = usersList.get(i);</span>
+            }
+<span class="fc" id="L58">            return users;</span>
+        }finally {
+<span class="pc" id="L60">            reader.close();</span>
+
+        }
+    }
+
+    /**
+     * Gets edge.
+     *
+     * @param csvFile the file stores the edges information
+     * @return a list stores the edges
+     * @throws IOException the io exception
+     */
+    public List&lt;int[]&gt; getEdge(String csvFile) throws IOException {
+<span class="fc" id="L73">        List&lt;int[]&gt; edge = new ArrayList&lt;&gt;();</span>
+        int[] transfer;
+<span class="fc" id="L75">        InputStream inputStream = new FileInputStream(csvFile);</span>
+<span class="fc" id="L76">        Reader rder = new InputStreamReader(inputStream, &quot;UTF-8&quot;);</span>
+<span class="fc" id="L77">        BufferedReader reader = new BufferedReader(rder);</span>
+<span class="fc" id="L78">        String line = null;</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        if(csvFile == null){</span>
+<span class="nc" id="L80">            throw new IllegalArgumentException(&quot;Template file should not be null&quot;);</span>
+        }
+        try{
+<span class="pc bpc" id="L83" title="1 of 4 branches missed.">            while((line= reader.readLine())!=null &amp;&amp; line.length() &gt; 0){</span>
+
+<span class="fc" id="L85">                String[] edgeInfo = line.split(&quot;,&quot;);</span>
+<span class="fc" id="L86">                transfer = new int[2];</span>
+<span class="fc" id="L87">                transfer[0] = Integer.parseInt(edgeInfo[0]);</span>
+<span class="fc" id="L88">                transfer[1] = Integer.parseInt(edgeInfo[1]);</span>
+                //transfer the string array to integer array
+<span class="fc" id="L90">                edge.add(transfer);</span>
+<span class="fc" id="L91">            }</span>
+<span class="fc" id="L92">            reader.close();</span>
+<span class="nc" id="L93">        }catch (Exception e) {</span>
+<span class="nc" id="L94">            e.printStackTrace();</span>
+
+<span class="fc" id="L96">        }</span>
+<span class="fc" id="L97">        return edge;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

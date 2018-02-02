@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Users.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">Users.java</span></div><h1>Users.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+/**
+ * The type Users.
+ */
+public class Users {
+    private int usersID;
+    private String createdDate;
+    private String gender;
+    private String age;
+    private String city;
+    private int follows;
+
+    /**
+     * Instantiates a new Users.
+     *
+     * @param userId     the id
+     * @param date   the date
+     * @param gender the gender
+     * @param age    the age
+     * @param city   the city
+     */
+<span class="fc" id="L23">    public Users(int userId, String date, String gender, String age, String city){</span>
+<span class="fc" id="L24">        this.usersID = userId;</span>
+<span class="fc" id="L25">        this.createdDate = date;</span>
+<span class="fc" id="L26">        this.gender = gender;</span>
+<span class="fc" id="L27">        this.age = age;</span>
+<span class="fc" id="L28">        this.city = city;</span>
+<span class="fc" id="L29">    }</span>
+
+    /**
+     * Gets users id.
+     *
+     * @return the users id
+     */
+    public int getUsersID() {
+<span class="fc" id="L37">        return usersID;</span>
+    }
+
+    /**
+     * Gets created date.
+     *
+     * @return the created date
+     */
+    public String getCreatedDate() {
+<span class="fc" id="L46">        return createdDate;</span>
+    }
+
+    /**
+     * Gets gender.
+     *
+     * @return the gender
+     */
+    public String getGender() {
+<span class="fc" id="L55">        return gender;</span>
+    }
+
+    /**
+     * Gets age.
+     *
+     * @return the age
+     */
+    public String getAge() {
+<span class="fc" id="L64">        return age;</span>
+    }
+
+    /**
+     * Gets city.
+     *
+     * @return the city
+     */
+    public String getCity() {
+<span class="fc" id="L73">        return city;</span>
+    }
+
+    /**
+     * Get user users.
+     *
+     * @param userId the id
+     * @return the users
+     */
+    public Users getUser(int userId){
+<span class="nc" id="L83">        return this;</span>
+    }
+
+    /**
+     * Gets follows.
+     *
+     * @return the follows
+     */
+    public int getFollows() {
+<span class="nc" id="L92">        return follows;</span>
+    }
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

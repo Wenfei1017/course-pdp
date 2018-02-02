@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>GenerateFile.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">GenerateFile.java</span></div><h1>GenerateFile.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Created by xwenfei on 10/23/17.
+ */
+<span class="fc" id="L14">public class GenerateFile {</span>
+
+    private static final  String HEADER = &quot;Node ID, Recommended nodes&quot;;
+
+    /**
+     * Get the current candy list and file name, create the file.
+     *
+     * @param recomendMap the recomend map
+     * @param dirName     the fileName
+     * @throws IllegalArgumentException if file is not created successfully
+     */
+    public void writeFile(Map&lt;Integer, List&lt;Integer&gt;&gt; recomendMap, String dirName) throws IllegalArgumentException {
+<span class="pc bpc" id="L26" title="2 of 4 branches missed.">        if (dirName== null || recomendMap == null) {</span>
+<span class="nc" id="L27">            throw new IllegalArgumentException(&quot;filename and friendList should not be null&quot;);</span>
+        }
+        //java.io.FileWriter Writer = null;
+<span class="fc" id="L30">        File directory = new File(dirName);</span>
+<span class="fc" id="L31">        boolean res = directory.mkdir();</span>
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">        if (!res)  {</span>
+<span class="fc" id="L33">            System.out.print(&quot;&quot;);</span>
+        }
+<span class="fc" id="L35">        File outputFile = new File(directory.getPath(), &quot;file3.csv&quot;);</span>
+        try {
+<span class="fc" id="L37">            BufferedWriter writer = Files.newBufferedWriter(Paths.get(outputFile.getPath()));</span>
+<span class="fc" id="L38">            writer.write(HEADER);</span>
+<span class="fc" id="L39">            writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L40">            Iterator&lt;Map.Entry&lt;Integer, List&lt;Integer&gt;&gt;&gt; iterator = recomendMap.entrySet().iterator();</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">            while(iterator.hasNext()) {</span>
+<span class="fc" id="L42">                StringBuffer stringBuffer = new StringBuffer();</span>
+<span class="fc" id="L43">                Map.Entry&lt;Integer, List&lt;Integer&gt;&gt; entry = iterator.next();</span>
+<span class="fc" id="L44">                int userID = entry.getKey();</span>
+<span class="fc" id="L45">                stringBuffer.append(userID + &quot;        &quot;);</span>
+<span class="fc" id="L46">                List&lt;Integer&gt; list = entry.getValue();</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">                for(int i=0; i&lt;list.size(); i++) {</span>
+<span class="fc" id="L48">                    stringBuffer.append(list.get(i) + &quot; &quot;);</span>
+                }
+<span class="fc" id="L50">                writer.write(stringBuffer.toString());</span>
+<span class="fc" id="L51">                writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L52">            }</span>
+<span class="fc" id="L53">            writer.close();</span>
+<span class="nc" id="L54">        } catch (IOException e) {</span>
+<span class="nc" id="L55">            e.printStackTrace();</span>
+<span class="fc" id="L56">        }</span>
+
+//        try {
+//            Writer = new FileWriter(dirName);
+//            Writer.write(&quot;User's ID, Gender, Age, City\n&quot;);
+//            for (Users user: friendList) {
+//                Writer.write(&quot;Recomend ID&quot; + &quot; &quot;+ user.getUsersID() + &quot; &quot;);
+//                Writer.write(&quot;Gender&quot; + &quot; &quot; +  user.getGender() + &quot; &quot;);
+//                Writer.write(&quot;Age&quot; + &quot; &quot; + user.getAge() + &quot; &quot;);
+//                Writer.write(&quot;City&quot; + &quot; &quot; + user.getCity() + &quot;\n&quot;);
+//            }
+//        } catch(IOException e) {
+//            e.getStackTrace();
+//        } finally {
+//            if (Writer != null) {
+//                try {
+//                    Writer.close();
+//                } catch (IOException e) {
+//                    e.getStackTrace();
+//                }
+//            }
+//        }
+<span class="fc" id="L78">    }</span>
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

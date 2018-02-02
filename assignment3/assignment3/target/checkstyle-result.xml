@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/Users/wangxiao/Documents/GitHub/pdp-xwenfei/assignment3/src/main/java/edu/neu/ccs/cs5010/Address.java">
+<error line="3" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="14" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="31" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="39" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="46" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="53" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="60" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="67" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-xwenfei/assignment3/src/main/java/edu/neu/ccs/cs5010/Customer.java">
+<error line="3" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="8" severity="warning" message="Abbreviation in name must contain no more than &apos;1&apos; capital letters." source="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
+<error line="8" column="24" severity="warning" message="Member name &apos;FIRSTNAME&apos; must match pattern &apos;^[a-z][a-z0-9][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="9" severity="warning" message="Abbreviation in name must contain no more than &apos;1&apos; capital letters." source="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
+<error line="9" column="24" severity="warning" message="Member name &apos;LASTNAME&apos; must match pattern &apos;^[a-z][a-z0-9][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="10" severity="warning" message="Abbreviation in name must contain no more than &apos;1&apos; capital letters." source="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
+<error line="10" column="25" severity="warning" message="Member name &apos;LOCATION&apos; must match pattern &apos;^[a-z][a-z0-9][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="11" severity="warning" message="Abbreviation in name must contain no more than &apos;1&apos; capital letters." source="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
+<error line="11" column="24" severity="warning" message="Member name &apos;PHONENUMBER&apos; must match pattern &apos;^[a-z][a-z0-9][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="12" severity="warning" message="Abbreviation in name must contain no more than &apos;1&apos; capital letters." source="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
+<error line="12" column="24" severity="warning" message="Member name &apos;EMAIL&apos; must match pattern &apos;^[a-z][a-z0-9][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="13" severity="warning" message="Abbreviation in name must contain no more than &apos;1&apos; capital letters." source="com.puppycrawl.tools.checkstyle.checks.naming.AbbreviationAsWordInNameCheck"/>
+<error line="13" column="24" severity="warning" message="Member name &apos;REWARDS&apos; must match pattern &apos;^[a-z][a-z0-9][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+<error line="15" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="29" column="18" severity="warning" message="WhitespaceAround: &apos;=&apos; is not preceded with whitespace." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="35" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="46" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="53" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="60" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="67" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="74" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="81" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-xwenfei/assignment3/src/main/java/edu/neu/ccs/cs5010/EmailGenerator.java">
+<error line="3" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - java.io.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="9" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="27" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="46" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="69" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="71" severity="warning" message="Line continuation have incorrect indentation level, expected level should be 4." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocTagContinuationIndentationCheck"/>
+<error line="92" column="14" severity="warning" message="Local variable name &apos;Date&apos; must match pattern &apos;^[a-z][a-z0-9][a-zA-Z0-9]*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.LocalVariableNameCheck"/>
+<error line="94" severity="warning" message="&apos;array initialization&apos; child have incorrect indentation level 14, expected level should be one of the following: 8, 10, 28, 31." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="108" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="120" column="70" severity="warning" message="&apos;+&apos; should be on a new line." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="139" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+</file>
+<file name="/Users/wangxiao/Documents/GitHub/pdp-xwenfei/assignment3/src/main/java/edu/neu/ccs/cs5010/Generator.java">
+<error line="4" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - java.io.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
+<error line="10" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="15" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="20" severity="warning" message="Line is longer than 100 characters (found 105)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="21" severity="warning" message="Line is longer than 100 characters (found 106)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="21" column="106" severity="warning" message="&apos;+&apos; should be on a new line." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="23" severity="warning" message="Line is longer than 100 characters (found 103)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+<error line="23" column="103" severity="warning" message="&apos;+&apos; should be on a new line." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="24" column="65" severity="warning" message="&apos;+&apos; should be on a new line." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="26" column="87" severity="warning" message="&apos;+&apos; should be on a new line." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="29" column="83" severity="warning" message="&apos;+&apos; should be on a new line." source="com.puppycrawl.tools.checkstyle.checks.whitespace.OperatorWrapCheck"/>
+<error line="33" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="74" column="7" severity="warning" message="&apos;}&apos; at column 7 should be on the same line as the next part of a multi-block statement." source="com.puppycrawl.tools.checkstyle.checks.blocks.RightCurlyCheck"/>
+<error line="76" severity="warning" message="&apos;else&apos; construct must use &apos;{}&apos;s." source="com.puppycrawl.tools.checkstyle.checks.blocks.NeedBracesCheck"/>
+<error line="76" severity="warning" message="&apos;switch&apos; have incorrect indentation level 11, expected level should be 8." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="76" column="12" severity="warning" message="switch without &quot;default&quot; clause." source="com.puppycrawl.tools.checkstyle.checks.coding.MissingSwitchDefaultCheck"/>
+<error line="78" severity="warning" message="&apos;block&apos; child have incorrect indentation level 10, expected level should be 12." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="80" severity="warning" message="&apos;block&apos; child have incorrect indentation level 10, expected level should be 12." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="83" severity="warning" message="&apos;if&apos; child have incorrect indentation level 12, expected level should be 14." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="83" severity="warning" message="&apos;method call&apos; child have incorrect indentation level 12, expected level should be 14." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="85" severity="warning" message="&apos;else&apos; child have incorrect indentation level 12, expected level should be 14." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="92" severity="warning" message="&apos;if&apos; child have incorrect indentation level 12, expected level should be 14." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="92" severity="warning" message="&apos;method call&apos; child have incorrect indentation level 12, expected level should be 14." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="116" severity="warning" message="First sentence of Javadoc is incomplete (period is missing) or not present." source="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheck"/>
+<error line="119" severity="warning" message="At-clause should have a non-empty description." source="com.puppycrawl.tools.checkstyle.checks.javadoc.NonEmptyAtclauseDescriptionCheck"/>
+</file>
+</checkstyle>

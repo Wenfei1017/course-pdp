@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Patient.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">Patient.java</span></div><h1>Patient.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.concurrent.TransferQueue;
+
+/**
+ * Created by xwenfei on 26/9
+ */
+
+public class Patient implements Comparable&lt;Patient&gt; {
+    public int UrgencyLevel;
+    public LocalDateTime ArriveTime;
+    public int TreatmentTime;
+    public LocalDateTime LeaveTime;
+    public static final int MAX_Treatment = 120;
+    public static final int MAX_Urgency = 10;
+    /**
+     * Creates a new patient given the patient's ArriveTime, condition and treatment time.
+     * Use LocalDateTime as date to mark time
+     * Condition has 10 levels from 1 to 10
+     * TreatmentTime is in the unit of minutes, no longer than MAX_TIME minutes
+     *
+     * @param ArriveTime the patient's arrival time
+     * @param UrgencyLevel the urgency of patient’s condition
+     * @param TreatmentTime how long the treatment will take
+     */
+<span class="fc" id="L29">    public Patient(int UrgencyLevel, LocalDateTime ArriveTime, int TreatmentTime)throws Exception {</span>
+<span class="pc bpc" id="L30" title="2 of 4 branches missed.">        if(UrgencyLevel &lt; 0 || UrgencyLevel &gt; MAX_Urgency){</span>
+<span class="nc" id="L31">            throw new IllegalArgumentException(&quot;patient urgency must be 0 - 10&quot;);</span>
+        }
+<span class="fc" id="L33">        this.UrgencyLevel = UrgencyLevel;</span>
+
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">        if(ArriveTime == null){</span>
+<span class="nc" id="L36">            throw new IllegalArgumentException(&quot;Arrival time illegal&quot;);</span>
+        }
+<span class="fc" id="L38">        this.ArriveTime = ArriveTime;</span>
+
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if(TreatmentTime &gt; MAX_Treatment){</span>
+<span class="nc" id="L41">            throw new IllegalArgumentException(&quot;Treatment time illegal&quot;);</span>
+        }
+<span class="fc" id="L43">        this.TreatmentTime = TreatmentTime;</span>
+
+<span class="fc" id="L45">        this.LeaveTime = ArriveTime.plusMinutes(TreatmentTime);</span>
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * @return the patient's arrival time
+     */
+    public LocalDateTime getArriveTime(){
+<span class="fc" id="L52">        return this.ArriveTime;</span>
+    }
+
+    /**
+     * @return the patient's urgency
+     */
+    public int getUrgencyLevel(){
+<span class="fc" id="L59">        return this.UrgencyLevel;</span>
+    }
+
+    /**
+     * @return the patient's treatment time
+     */
+    public int getTreatmentTime(){
+<span class="fc" id="L66">        return this.TreatmentTime;</span>
+    }
+
+    @Override
+    public int compareTo(Patient patient) {
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">        if(patient == null){</span>
+<span class="nc" id="L72">            throw new IllegalArgumentException(&quot;patient is null&quot;);</span>
+        }
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if(patient.UrgencyLevel != this.UrgencyLevel){</span>
+<span class="fc" id="L75">            return this.UrgencyLevel - patient.UrgencyLevel;</span>
+        }
+        else{
+<span class="fc" id="L78">            return this.ArriveTime.compareTo(patient.ArriveTime);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

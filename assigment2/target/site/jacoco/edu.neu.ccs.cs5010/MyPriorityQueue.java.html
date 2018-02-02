@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MyPriorityQueue.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">MyPriorityQueue.java</span></div><h1>MyPriorityQueue.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+/**
+ * created by xwenfei on 9/28
+ */
+
+import java.util.*;
+
+public class MyPriorityQueue&lt;E extends Comparable&lt;E&gt;&gt;{
+
+    public ArrayList&lt;E&gt; PQ;
+
+    /**
+     * Empty constructor
+     */
+<span class="fc" id="L15">    public MyPriorityQueue(){</span>
+<span class="fc" id="L16">        PQ = new ArrayList&lt;E&gt;();</span>
+<span class="fc" id="L17">    }</span>
+
+    /**
+     * insert() inserts an patient in the queue.
+     */
+    public void insert(E e) {
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">        if (e == null) {</span>
+<span class="nc" id="L24">            throw new IllegalArgumentException(&quot;item to be inserted is null&quot;);</span>
+        } else {
+<span class="fc" id="L26">            PQ.add(e);</span>
+<span class="fc" id="L27">            PQ.sort(new Comparator&lt;E&gt;(){</span>
+                public int compare(E e1, E e2) {
+<span class="fc" id="L29">                    return e1.compareTo(e2);</span>
+                }
+            });
+        }
+<span class="fc" id="L33">    }</span>
+
+    /**
+     * @return the first item from the queue and remove it.  If the
+     *  list is empty, do nothing.
+     */
+    public E remove(){
+<span class="pc bpc" id="L40" title="1 of 2 branches missed.">        if (PQ == null) {</span>
+<span class="nc" id="L41">            return null;</span>
+        }
+        else{
+<span class="fc" id="L44">            E removed = PQ.get(0);</span>
+<span class="fc" id="L45">            PQ.remove(0);</span>
+<span class="fc" id="L46">            return removed;</span>
+        }
+    }
+
+    /**
+     * @return the first item from the queue.  If the
+     *  list is empty, do nothing.
+     */
+    public E front(){
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">        if(PQ == null){</span>
+<span class="nc" id="L56">            return null;</span>
+        }else{
+<span class="fc" id="L58">            return PQ.get(0);</span>
+        }
+    }
+
+    /**
+     * @return if the queue is empty.  If the
+     *  list is empty, return true, else return false.
+     */
+    public boolean isEmpty(){
+<span class="fc" id="L67">        return PQ.isEmpty();</span>
+    }
+
+    /**
+     *
+     * @return the priority list in forward order
+     */
+    public ArrayList testForwardTraversal(){
+<span class="pc bpc" id="L75" title="1 of 2 branches missed.">        if(PQ == null){</span>
+<span class="nc" id="L76">            throw new NoSuchElementException(&quot;the queue is empty&quot;);</span>
+        }else{
+<span class="fc" id="L78">            return this.PQ;</span>
+        }
+
+    }
+
+    /**
+     * @return the reversed priority
+     */
+    public  ArrayList testReverseTraversal()throws Exception{
+<span class="pc bpc" id="L87" title="1 of 2 branches missed.">        if(PQ == null){</span>
+<span class="nc" id="L88">            throw new NoSuchElementException(&quot;the queue is empty&quot;);</span>
+        }else{
+<span class="fc" id="L90">            int num = PQ.size() - 1;</span>
+<span class="fc" id="L91">            ArrayList&lt;E&gt; reverseT = new ArrayList&lt;E&gt;();</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">            while(num &gt;= 0){</span>
+<span class="fc" id="L93">                reverseT.add(PQ.get(num));</span>
+<span class="fc" id="L94">                num--;</span>
+            }
+<span class="fc" id="L96">            return reverseT;</span>
+        }
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

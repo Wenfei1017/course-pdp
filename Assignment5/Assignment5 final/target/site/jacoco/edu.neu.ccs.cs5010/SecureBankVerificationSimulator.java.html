@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>SecureBankVerificationSimulator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">SecureBankVerificationSimulator.java</span></div><h1>SecureBankVerificationSimulator.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Created by wenfei on 10/30/17.
+ */
+<span class="nc" id="L13">public class SecureBankVerificationSimulator {</span>
+
+    public static final int clientsNumberIndex = 0;
+    public static final int verificationNumberIndex = 1;
+    public static final int fractionIndex = 2;
+    public static final int fileNameIndex = 3;
+    public static final int transactionTypeBound = 5;
+
+    private static HashMap&lt;Integer, Client&gt; clientData;
+    private static HashMap&lt;Integer, Client&gt; clientBankData;
+    private static ArrayList&lt;BigInteger[]&gt; rawPairs;
+    private static ArrayList&lt;Integer&gt; clientIDArray;
+
+    /**
+     * Generate and store all clients, both clients itself and the clients in bank.
+     * Also, store all the ID information in an array.
+     *
+     */
+    public static void generateClients(int clientsNumber) {
+<span class="nc" id="L32">        ClientGenerator clientGenerator = new ClientGenerator(clientsNumber);</span>
+<span class="nc" id="L33">        clientData = clientGenerator.generateClientData();</span>
+        Client client;
+<span class="nc bnc" id="L35" title="All 2 branches missed.">        for (Map.Entry&lt;Integer, Client&gt; entry: clientData.entrySet()) {</span>
+<span class="nc" id="L36">            client = entry.getValue();</span>
+<span class="nc" id="L37">            client.deletePrivateKey();</span>
+<span class="nc" id="L38">            clientBankData.put(entry.getKey(), client);</span>
+<span class="nc" id="L39">            clientIDArray.add(client.getClientID());</span>
+<span class="nc" id="L40">        }</span>
+<span class="nc" id="L41">    }</span>
+
+    /**
+     * Generate message &amp; signature pairs
+     */
+    public static void generatePairs(int pairNumber, double fraction) {
+        BigInteger[] pair;
+        Client client;
+<span class="nc" id="L49">        RandomNumber randomNumber = new RandomNumber();</span>
+<span class="nc" id="L50">        PairGenerator pairGenerator = new PairGenerator();</span>
+        int clientID;
+
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        for (int i = 0; i &lt; pairNumber; i++) {</span>
+<span class="nc" id="L54">            clientID = clientIDArray.get(randomNumber.getRandom(clientIDArray.size()));</span>
+<span class="nc" id="L55">            client = clientData.getOrDefault(clientID, null);</span>
+<span class="nc" id="L56">            pair = pairGenerator.generatePairs(fraction, client);</span>
+<span class="nc" id="L57">            rawPairs.add(pair);</span>
+        }
+<span class="nc" id="L59">    }</span>
+
+    /**
+     * After verifying the signature, try to process the transaction.
+     *
+     *@return whether the amount is satisfied
+     */
+    public static void writeTransaction(int message, Client client, BigInteger signature, boolean verified,
+                                          FileWriter writer, OutputFile outputFile) throws IOException {
+        //(int message, Client client, BigInteger signature, boolean verified, FileWriter writer)
+<span class="nc" id="L69">        int type = message % 10;</span>
+<span class="nc" id="L70">        int amount = message / 10;</span>
+        String status;
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (type &lt; transactionTypeBound) {// type is deposit</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">            if (amount &lt;= client.getDepositLimt()) {</span>
+<span class="nc" id="L74">                status = &quot;deposit accepted&quot;;</span>
+            } else {
+<span class="nc" id="L76">                status = &quot;deposit rejected&quot;;</span>
+            }
+
+        } else {// type is withdrawal
+<span class="nc bnc" id="L80" title="All 2 branches missed.">            if (amount &lt;= client.getWithdrawalLimt()) {</span>
+<span class="nc" id="L81">                status = &quot;withdrawal accepted&quot;;</span>
+            } else {
+<span class="nc" id="L83">                status = &quot;withdrawal rejected&quot;;</span>
+            }
+        }
+<span class="nc" id="L86">        outputFile.writeFile(message, client, signature, status, verified, writer);</span>
+<span class="nc" id="L87">    }</span>
+
+    /**
+     * After generating and storing all the information, start processing the pairs.
+     *
+     */
+    public static void processPairs(String fileName) throws IOException {
+        int clientID;
+        Client client;
+        int newMessage;
+        int oriMessage;
+<span class="nc" id="L98">        RSASignature signature = new RSASignature();</span>
+<span class="nc" id="L99">        OutputFile outputFile = new OutputFile();</span>
+<span class="nc" id="L100">        FileWriter writer = outputFile.getFileWriter(fileName);</span>
+
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        for (BigInteger[] pair: rawPairs) {</span>
+<span class="nc" id="L103">            clientID = pair[PairGenerator.clientIDIndex].intValue();</span>
+<span class="nc" id="L104">            client = clientBankData.getOrDefault(clientID, null);</span>
+<span class="nc" id="L105">            oriMessage = pair[PairGenerator.messageIndex].intValue();</span>
+<span class="nc" id="L106">            newMessage = signature.verifySignature(pair[PairGenerator.signatureIndex], client);</span>
+<span class="nc" id="L107">            writer.write(&quot;Transaction number, Date, Time, Client ID, &quot; +</span>
+                    &quot;Message, Digital signature, Verified, Transactional status&quot;);
+<span class="nc bnc" id="L109" title="All 2 branches missed.">            if (oriMessage == newMessage) {</span>
+<span class="nc" id="L110">                writeTransaction(newMessage, client, pair[PairGenerator.signatureIndex],</span>
+                        true, writer, outputFile);
+            } else {//signature is incorrect
+<span class="nc" id="L113">                writeTransaction(newMessage, client, pair[PairGenerator.signatureIndex],</span>
+                        false, writer, outputFile);
+            }
+<span class="nc" id="L116">        }</span>
+<span class="nc" id="L117">        outputFile.closeFile(writer);</span>
+<span class="nc" id="L118">    }</span>
+
+    /**
+     * Read command line and set the neighbor.
+     * add all the candy from historical data
+     */
+    public static void simulate(String[] commandLine) throws IOException {
+<span class="nc" id="L125">        clientBankData = new HashMap&lt;&gt;();</span>
+<span class="nc" id="L126">        rawPairs = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L127">        clientIDArray = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L128">        int clientsNumber = Integer.parseInt(commandLine[clientsNumberIndex]);</span>
+<span class="nc" id="L129">        int pairNumber = Integer.parseInt(commandLine[verificationNumberIndex]);</span>
+<span class="nc" id="L130">        double fraction = Double.parseDouble(commandLine[fractionIndex]);</span>
+<span class="nc" id="L131">        generateClients(clientsNumber);</span>
+<span class="nc" id="L132">        generatePairs(pairNumber, fraction);</span>
+<span class="nc" id="L133">        processPairs(commandLine[fileNameIndex]);</span>
+<span class="nc" id="L134">    }</span>
+
+    /**
+     * Main method, get command line from the user.
+     */
+    public static void main(String[] args) throws IOException {
+<span class="nc" id="L140">        String[] testLine = {&quot;200&quot;, &quot;200&quot;, &quot;0.2&quot;, &quot;output.csv&quot;};</span>
+<span class="nc" id="L141">        simulate(testLine);</span>
+<span class="nc" id="L142">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

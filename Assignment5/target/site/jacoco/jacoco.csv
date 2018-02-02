@@ -1,0 +1,9 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Assignment for class CS5010,edu.neu.ccs.cs5010,ClientGenerator,0,76,1,3,0,18,1,3,0,2
+Assignment for class CS5010,edu.neu.ccs.cs5010,OutputFile,20,108,2,4,7,22,2,5,0,4
+Assignment for class CS5010,edu.neu.ccs.cs5010,RSASignature,0,38,0,0,0,8,0,3,0,3
+Assignment for class CS5010,edu.neu.ccs.cs5010,PairGenerator,0,68,0,2,0,13,0,3,0,2
+Assignment for class CS5010,edu.neu.ccs.cs5010,RandomNumber,0,26,0,0,0,7,0,3,0,3
+Assignment for class CS5010,edu.neu.ccs.cs5010,RSAKeyGenerator,0,118,2,4,0,17,2,3,0,2
+Assignment for class CS5010,edu.neu.ccs.cs5010,SecureBankVerificationSimulator,3,248,0,14,2,54,1,13,1,6
+Assignment for class CS5010,edu.neu.ccs.cs5010,Client,4,107,0,0,2,18,1,7,1,7

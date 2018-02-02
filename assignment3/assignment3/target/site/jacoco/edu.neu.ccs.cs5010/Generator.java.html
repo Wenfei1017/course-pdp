@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Generator.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccs.cs5010</a> &gt; <span class="el_source">Generator.java</span></div><h1>Generator.java</h1><pre class="source lang-java linenums">package edu.neu.ccs.cs5010;
+
+
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * created by xwenfei on 10/08
+ */
+
+<span class="fc" id="L14">public class Generator {</span>
+  /**
+   * print input usage hint as the assignment requires
+   */
+  public static void printUsage() {
+<span class="fc" id="L19">    System.out.println(&quot;Usage: &quot;);</span>
+<span class="fc" id="L20">    System.out.println(&quot;--email-template &lt;file&gt; \t accepts a filename that holds the email template.\n&quot;);</span>
+<span class="fc" id="L21">    System.out.println(&quot;--output-dir &lt;path&gt;     \t accepts the name of a folder, all output is placed\n&quot; +</span>
+            &quot;                        \t in this folder\n&quot;);
+<span class="fc" id="L23">    System.out.println(&quot;--csv-file &lt;path&gt;       \t accepts the name of the csv file to process, in\n&quot; +</span>
+            &quot;                        + \t a following format\n&quot; +
+            &quot;                        \t Flight&lt;id&gt;From&lt;departure-city&gt;To&lt;destination-city&gt;.csv\n&quot;);
+<span class="fc" id="L26">    System.out.println(&quot;--event &lt;details&gt;       \t specifies if the delay refers to &quot; +</span>
+            &quot;departure/arrival \n&quot;);
+<span class="fc" id="L28">    System.out.println(&quot;For example: &quot;);</span>
+<span class="fc" id="L29">    System.out.println(&quot;--email-template email-template.txt --output-dir emails &quot; +</span>
+            &quot;--csv-file Flight363FromSeattleToBoston.csv –-event arrival &quot;);
+<span class="fc" id="L31">  }</span>
+
+  /**
+   * get input from command and judge if it's the right format
+   * if not, print error message
+   * prerequest is that both 4 --event, --output-dir and other 2 should be typed correctly
+   */
+  public static void getInput(String[] args) throws Exception {
+
+<span class="fc" id="L40">    StringBuilder stringBuilder = new StringBuilder();</span>
+<span class="fc" id="L41">    StringBuilder errorMessage = new StringBuilder();</span>
+<span class="fc" id="L42">    errorMessage.append(&quot;Error: &quot;);</span>
+
+<span class="fc" id="L44">    String csvFile = null;</span>
+<span class="fc" id="L45">    String dirName = null;</span>
+<span class="fc" id="L46">    String templateFile = null;</span>
+<span class="fc" id="L47">    String event = null;</span>
+
+<span class="fc bfc" id="L49" title="All 2 branches covered.">    for (int index = 0; index &lt; args.length; index++) {</span>
+<span class="fc bfc" id="L50" title="All 4 branches covered.">      if (args[index].contains(&quot;--&quot;) &amp;&amp; index != 0) {</span>
+<span class="fc" id="L51">        stringBuilder.append(&quot;#&quot;);</span>
+      }
+<span class="fc" id="L53">      stringBuilder.append(args[index]);</span>
+<span class="fc" id="L54">      stringBuilder.append(&quot; &quot;);</span>
+    }
+<span class="fc" id="L56">    stringBuilder.append(&quot;#&quot;);</span>
+<span class="fc" id="L57">    String inputLine = stringBuilder.toString();</span>
+
+<span class="fc" id="L59">    Pattern evPattern = Pattern.compile(&quot;--.*?[ ]&quot;);</span>
+<span class="fc" id="L60">    Pattern paraPattern = Pattern.compile(&quot;--.*?[#]&quot;);</span>
+<span class="fc" id="L61">    Matcher paraMatcher = paraPattern.matcher(inputLine);</span>
+<span class="fc" id="L62">    Matcher evMatcher = evPattern.matcher(inputLine);</span>
+    String paraString;
+    String realPara;
+
+<span class="pc bpc" id="L66" title="1 of 4 branches missed.">    while (evMatcher.find() &amp;&amp; paraMatcher.find()) {</span>
+<span class="fc" id="L67">      paraString = inputLine.substring(evMatcher.start(), evMatcher.end() - 1);</span>
+<span class="fc" id="L68">      realPara = inputLine.substring(evMatcher.end(), paraMatcher.end() - 1);</span>
+      //-1 is to get rid of space (for parastring) and &quot;#&quot; (for realPara)
+
+      //judge if the parameter is complete
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">      if ((evMatcher.end() + 1) == paraMatcher.end()) {</span>
+<span class="nc" id="L73">        errorMessage.append(paraString + &quot; and &quot;);</span>
+      }
+      //if para is given, judge if the parameter is in the correct format
+<span class="pc bpc" id="L76" title="6 of 18 branches missed.">      else switch (paraString) {</span>
+          case &quot;--output-dir&quot;:
+<span class="fc" id="L78">          dirName = realPara.substring(0, realPara.length() - 1);</span>
+          //-1 is to get rid of space
+<span class="fc" id="L80">          break;</span>
+          case &quot;--event&quot;:
+<span class="pc bpc" id="L82" title="3 of 4 branches missed.">            if (!realPara.equals(&quot;departure &quot;) &amp;&amp; !realPara.equals(&quot;arrival &quot;)) {</span>
+<span class="nc" id="L83">            errorMessage.append(paraString + &quot; and &quot;);</span>
+            } else {
+<span class="fc" id="L85">            event = realPara.substring(0, realPara.length() - 1);</span>
+            }
+<span class="fc" id="L87">            break;</span>
+          case &quot;--csv-file&quot;: {
+<span class="fc" id="L89">            Pattern csvFilePattern = Pattern.compile(&quot;Flight\\d+From.+To.+\\.csv&quot;);</span>
+<span class="fc" id="L90">            Matcher csvMatcher = csvFilePattern.matcher(realPara);</span>
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">            if (!csvMatcher.find()) {</span>
+<span class="fc" id="L92">            errorMessage.append(paraString + &quot; and &quot;);</span>
+            } else {
+<span class="nc" id="L94">              csvFile = realPara.substring(0, realPara.length() - 1);</span>
+            }
+<span class="nc" id="L96">            break;</span>
+          }
+          case &quot;--email-template&quot;:
+<span class="fc" id="L99">            templateFile = realPara.substring(0, realPara.length() - 1);</span>
+<span class="fc" id="L100">            break;</span>
+        }
+    }
+
+<span class="fc" id="L104">    String error = errorMessage.toString();</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">    if (error.equals(&quot;Error: &quot;)) {</span>
+      //means the parameter is correct
+<span class="nc" id="L107">      EmailGenerator.mailAutomation(csvFile, dirName, event, templateFile);</span>
+    } else {
+<span class="fc" id="L109">      errorMessage.delete(errorMessage.length() - 4, errorMessage.length());</span>
+<span class="fc" id="L110">      errorMessage.append(&quot;were given without providing appropriate arguments:&quot;);</span>
+<span class="fc" id="L111">      System.out.println(errorMessage);</span>
+<span class="fc" id="L112">      printUsage();</span>
+    }
+<span class="fc" id="L114">  }</span>
+
+  /**
+   *
+   * @param args input from user
+   * @throws Exception
+   */
+  public static void main(String[] args) throws Exception {
+<span class="nc bnc" id="L122" title="All 2 branches missed.">    if (args.length &lt; 4) {</span>
+<span class="nc" id="L123">      printUsage();</span>
+<span class="nc" id="L124">      throw new IllegalArgumentException(&quot;Please follow the instruction.&quot;);</span>
+    } else {
+<span class="nc" id="L126">      getInput(args);</span>
+    }
+<span class="nc" id="L128">  }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

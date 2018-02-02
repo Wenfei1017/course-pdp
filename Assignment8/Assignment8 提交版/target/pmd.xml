@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.3.5" timestamp="2017-11-27T18:07:13.817">
+<file name="/Users/wangxiao/Desktop/Assignment8 2/src/main/java/edu.neu.ccs.cs5010.Assignment8/Database.java">
+<violation beginline="1" endline="1" begincolumn="9" endcolumn="38" rule="PackageCase" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#PackageCase" priority="3">
+Package name contains upper case characters
+</violation>
+</file>
+<file name="/Users/wangxiao/Desktop/Assignment8 2/src/main/java/edu.neu.ccs.cs5010.Assignment8/HourData.java">
+<violation beginline="1" endline="1" begincolumn="9" endcolumn="38" rule="PackageCase" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#PackageCase" priority="3">
+Package name contains upper case characters
+</violation>
+<violation beginline="16" endline="16" begincolumn="34" endcolumn="43" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" class="HourData" variable="startIndex" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'startIndex' is not all capitals.
+</violation>
+</file>
+<file name="/Users/wangxiao/Desktop/Assignment8 2/src/main/java/edu.neu.ccs.cs5010.Assignment8/LiftData.java">
+<violation beginline="1" endline="1" begincolumn="9" endcolumn="38" rule="PackageCase" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#PackageCase" priority="3">
+Package name contains upper case characters
+</violation>
+</file>
+<file name="/Users/wangxiao/Desktop/Assignment8 2/src/main/java/edu.neu.ccs.cs5010.Assignment8/LiftRidesData.java">
+<violation beginline="1" endline="1" begincolumn="9" endcolumn="38" rule="PackageCase" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#PackageCase" priority="3">
+Package name contains upper case characters
+</violation>
+<violation beginline="14" endline="14" begincolumn="30" endcolumn="33" rule="UnusedPrivateField" ruleset="Unused Code" package="edu.neu.ccs.cs5010.Assignment8" class="LiftRidesData" variable="list" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'list'.
+</violation>
+<violation beginline="17" endline="17" begincolumn="34" endcolumn="43" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" class="LiftRidesData" variable="startIndex" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'startIndex' is not all capitals.
+</violation>
+<violation beginline="18" endline="18" begincolumn="34" endcolumn="39" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" class="LiftRidesData" variable="number" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'number' is not all capitals.
+</violation>
+</file>
+<file name="/Users/wangxiao/Desktop/Assignment8 2/src/main/java/edu.neu.ccs.cs5010.Assignment8/ReadersWriters.java">
+<violation beginline="1" endline="1" begincolumn="9" endcolumn="38" rule="PackageCase" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#PackageCase" priority="3">
+Package name contains upper case characters
+</violation>
+<violation beginline="14" endline="14" begincolumn="21" endcolumn="22" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" class="ReadersWriters" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+<violation beginline="17" endline="17" begincolumn="30" endcolumn="42" rule="UnusedPrivateField" ruleset="Unused Code" package="edu.neu.ccs.cs5010.Assignment8" class="ReadersWriters" variable="blockingQueue" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'blockingQueue'.
+</violation>
+<violation beginline="28" endline="28" begincolumn="35" endcolumn="36" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" class="ReadersWriters" method="ReadersWriters" variable="id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+</file>
+<file name="/Users/wangxiao/Desktop/Assignment8 2/src/main/java/edu.neu.ccs.cs5010.Assignment8/SkiQueryProcessor.java">
+<violation beginline="1" endline="1" begincolumn="9" endcolumn="38" rule="PackageCase" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#PackageCase" priority="3">
+Package name contains upper case characters
+</violation>
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statements" package="edu.neu.ccs.cs5010.Assignment8" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.Iterator'
+</violation>
+<violation beginline="14" endline="14" begincolumn="34" endcolumn="39" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" class="SkiQueryProcessor" variable="factor" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'factor' is not all capitals.
+</violation>
+<violation beginline="15" endline="15" begincolumn="39" endcolumn="51" rule="UnusedPrivateField" ruleset="Unused Code" package="edu.neu.ccs.cs5010.Assignment8" class="SkiQueryProcessor" variable="blockingQueue" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'blockingQueue'.
+</violation>
+<violation beginline="18" endline="18" begincolumn="34" endcolumn="40" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" class="SkiQueryProcessor" variable="segment" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'segment' is not all capitals.
+</violation>
+<violation beginline="95" endline="95" begincolumn="33" endcolumn="120" rule="IfStmtsMustUseBraces" ruleset="Braces" package="edu.neu.ccs.cs5010.Assignment8" class="SkiQueryProcessor" method="main" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/braces.html#IfStmtsMustUseBraces" priority="3">
+Avoid using if statements without curly braces
+</violation>
+</file>
+<file name="/Users/wangxiao/Desktop/Assignment8 2/src/main/java/edu.neu.ccs.cs5010.Assignment8/SkierData.java">
+<violation beginline="1" endline="1" begincolumn="9" endcolumn="38" rule="PackageCase" ruleset="Naming" package="edu.neu.ccs.cs5010.Assignment8" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#PackageCase" priority="3">
+Package name contains upper case characters
+</violation>
+</file>
+</pmd>

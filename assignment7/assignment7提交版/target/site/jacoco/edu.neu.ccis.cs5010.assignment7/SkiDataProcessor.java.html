@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>SkiDataProcessor.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Assignment for class CS5010</a> &gt; <a href="index.source.html" class="el_package">edu.neu.ccis.cs5010.assignment7</a> &gt; <span class="el_source">SkiDataProcessor.java</span></div><h1>SkiDataProcessor.java</h1><pre class="source lang-java linenums">package edu.neu.ccis.cs5010.assignment7;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+
+public class SkiDataProcessor {
+	private BlockingQueue&lt;int[]&gt; skierQueue;
+	private BlockingQueue&lt;Integer&gt; liftQueue;
+	private BlockingQueue&lt;int[]&gt; hourQueue;
+	private Map&lt;Integer, Skier&gt; skierMap;
+	private Map&lt;Integer, Lift&gt; liftMap;
+	private Map&lt;Integer, Hour&gt; hourMap;
+
+<span class="fc" id="L18">	public SkiDataProcessor() {</span>
+<span class="fc" id="L19">		this.skierMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L20">		this.liftMap = new TreeMap&lt;&gt;();</span>
+<span class="fc" id="L21">		this.hourMap = new TreeMap&lt;&gt;();</span>
+<span class="fc" id="L22">		this.skierQueue = new LinkedBlockingDeque&lt;&gt;();</span>
+<span class="fc" id="L23">		this.liftQueue = new LinkedBlockingDeque&lt;&gt;();</span>
+<span class="fc" id="L24">		this.hourQueue = new LinkedBlockingDeque&lt;&gt;();</span>
+<span class="fc" id="L25">	}</span>
+
+	public void process(String file) {
+		try {
+<span class="fc" id="L29">			InputStream inputStream = new FileInputStream(file);</span>
+<span class="fc" id="L30">			Reader rder = new InputStreamReader(inputStream, &quot;UTF-8&quot;);</span>
+<span class="fc" id="L31">			BufferedReader reader = new BufferedReader(rder);</span>
+<span class="fc" id="L32">			String line = reader.readLine();</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">			while((line = reader.readLine()) != null) {</span>
+<span class="fc" id="L34">				String[] args = line.split(&quot;,&quot;);</span>
+<span class="fc" id="L35">				int skierId = Integer.parseInt(args[2]);</span>
+<span class="fc" id="L36">				int liftId = Integer.parseInt(args[3]);</span>
+<span class="fc" id="L37">				int time = Integer.parseInt(args[4]);</span>
+<span class="fc" id="L38">				int section = getSection(time);</span>
+<span class="fc" id="L39">				checkSkier(skierId, liftId);</span>
+<span class="fc" id="L40">				checkLift(liftId);</span>
+<span class="fc" id="L41">				checkSection(section, liftId);</span>
+<span class="fc" id="L42">			}</span>
+<span class="nc" id="L43">		} catch (FileNotFoundException e) {</span>
+<span class="nc" id="L44">			e.printStackTrace();</span>
+<span class="nc" id="L45">		} catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L46">			e.printStackTrace();</span>
+<span class="nc" id="L47">		} catch (IOException e) {</span>
+<span class="nc" id="L48">			e.printStackTrace();</span>
+<span class="pc" id="L49">		}</span>
+
+<span class="fc" id="L51">	}</span>
+
+	public void process(String file, int flag) {
+		try {
+<span class="fc" id="L55">			InputStream inputStream = new FileInputStream(file);</span>
+<span class="fc" id="L56">			Reader rder = new InputStreamReader(inputStream, &quot;UTF-8&quot;);</span>
+<span class="fc" id="L57">			BufferedReader reader = new BufferedReader(rder);</span>
+<span class="fc" id="L58">			String line = reader.readLine();</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">			while((line = reader.readLine()) != null) {</span>
+<span class="fc" id="L60">				String[] args = line.split(&quot;,&quot;);</span>
+<span class="fc" id="L61">				int skierId = Integer.parseInt(args[2]);</span>
+<span class="fc" id="L62">				int liftId = Integer.parseInt(args[3]);</span>
+<span class="fc" id="L63">				int time = Integer.parseInt(args[4]);</span>
+<span class="fc" id="L64">				int section = getSection(time);</span>
+<span class="fc" id="L65">				int[] array = new int[] {skierId, liftId};</span>
+<span class="fc" id="L66">				int[] array2 = new int[] {section, liftId};</span>
+<span class="fc" id="L67">				skierQueue.add(array);</span>
+<span class="fc" id="L68">				liftQueue.add(liftId);</span>
+<span class="fc" id="L69">				hourQueue.add(array2);</span>
+<span class="fc" id="L70">			}</span>
+<span class="nc" id="L71">		} catch (FileNotFoundException e) {</span>
+<span class="nc" id="L72">			e.printStackTrace();</span>
+<span class="nc" id="L73">		} catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L74">			e.printStackTrace();</span>
+<span class="nc" id="L75">		} catch (IOException e) {</span>
+<span class="nc" id="L76">			e.printStackTrace();</span>
+<span class="pc" id="L77">		}</span>
+
+<span class="fc" id="L79">	}</span>
+
+	public void output(int flag) {
+<span class="fc" id="L82">		SkierThread skierThread = new SkierThread(skierQueue);</span>
+<span class="fc" id="L83">		Thread thread1 = new Thread(skierThread);</span>
+<span class="fc" id="L84">		LiftThread liftThread = new LiftThread(liftQueue);</span>
+<span class="fc" id="L85">		Thread thread2 = new Thread(liftThread);</span>
+<span class="fc" id="L86">		HourThread hourThread = new HourThread(hourQueue);</span>
+<span class="fc" id="L87">		Thread thread3 = new Thread(hourThread);</span>
+<span class="fc" id="L88">		Long time = System.currentTimeMillis();</span>
+<span class="fc" id="L89">		thread1.start();</span>
+<span class="fc" id="L90">		thread2.start();</span>
+<span class="fc" id="L91">		thread3.start();</span>
+<span class="fc" id="L92">		System.out.print(&quot;Concurrent Solution : &quot; + (System.currentTimeMillis() - time) + &quot; ms&quot;);</span>
+<span class="fc" id="L93">	}</span>
+
+	public void output() {
+<span class="fc" id="L96">			String skierHeader = &quot;SkierID, Vertical&quot;;</span>
+<span class="fc" id="L97">			String liftHeader = &quot;LiftID, Number of Rides&quot;;</span>
+<span class="fc" id="L98">			String hourHeader = &quot;LiftID, Number of Rides&quot;;</span>
+<span class="fc" id="L99">			Long time = System.currentTimeMillis();</span>
+<span class="fc" id="L100">			outputSkier(skierHeader);</span>
+<span class="fc" id="L101">			outputLift(liftHeader);</span>
+<span class="fc" id="L102">			outputHour(hourHeader);</span>
+<span class="fc" id="L103">			System.out.println(&quot;Sequential Solution :&quot; + (System.currentTimeMillis() - time) + &quot; ms&quot;);</span>
+<span class="fc" id="L104">	}</span>
+
+	private void outputSkier(String header) {
+<span class="fc" id="L107">		File file = new File(&quot;skier.csv&quot;);</span>
+<span class="fc" id="L108">		List&lt;Map.Entry&lt;Integer, Skier&gt;&gt; list = new ArrayList&lt;&gt;(skierMap.entrySet());</span>
+<span class="fc" id="L109">		Collections.sort(list, new Comparator&lt;Map.Entry&lt;Integer, Skier&gt;&gt;() {</span>
+			@Override
+			public int compare(Map.Entry&lt;Integer, Skier&gt; o1, Map.Entry&lt;Integer, Skier&gt; o2) {
+<span class="fc" id="L112">				return o2.getValue().getVertical() - o1.getValue().getVertical();</span>
+			}
+		});
+		try {
+<span class="fc" id="L116">			BufferedWriter writer = Files.newBufferedWriter(Paths.get(file.getPath()));</span>
+<span class="fc" id="L117">			writer.write(header);</span>
+<span class="fc" id="L118">			writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L119">			Iterator&lt;Map.Entry&lt;Integer, Skier&gt;&gt; iterator = list.iterator();</span>
+<span class="fc" id="L120">			int count = 0;</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">			while(iterator.hasNext()) {</span>
+<span class="fc" id="L122">				StringBuilder stringBuilder = new StringBuilder();</span>
+<span class="fc" id="L123">				Map.Entry&lt;Integer, Skier&gt; entry = iterator.next();</span>
+<span class="fc" id="L124">				int id = entry.getKey();</span>
+<span class="fc" id="L125">				int vertical = entry.getValue().getVertical();</span>
+<span class="fc" id="L126">				stringBuilder.append(id);</span>
+<span class="fc" id="L127">				stringBuilder.append(&quot; &quot;);</span>
+<span class="fc" id="L128">				stringBuilder.append(vertical);</span>
+<span class="fc" id="L129">				writer.write(stringBuilder.toString());</span>
+<span class="fc" id="L130">				writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L131">				count++;</span>
+<span class="fc bfc" id="L132" title="All 2 branches covered.">				if(count == 100) break;</span>
+<span class="fc" id="L133">			}</span>
+<span class="fc" id="L134">			writer.close();</span>
+<span class="nc" id="L135">		} catch (IOException e) {</span>
+<span class="nc" id="L136">			e.printStackTrace();</span>
+<span class="fc" id="L137">		}</span>
+<span class="fc" id="L138">	}</span>
+
+	private void outputLift(String header) {
+<span class="fc" id="L141">		File file = new File(&quot;lift.csv&quot;);</span>
+		try {
+<span class="fc" id="L143">			BufferedWriter writer = Files.newBufferedWriter(Paths.get(file.getPath()));</span>
+<span class="fc" id="L144">			writer.write(header);</span>
+<span class="fc" id="L145">			writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L146">			Iterator&lt;Map.Entry&lt;Integer, Lift&gt;&gt; iterator = liftMap.entrySet().iterator();</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">			while(iterator.hasNext()) {</span>
+<span class="fc" id="L148">				StringBuilder stringBuilder = new StringBuilder();</span>
+<span class="fc" id="L149">				Map.Entry&lt;Integer, Lift&gt; entry = iterator.next();</span>
+<span class="fc" id="L150">				int id = entry.getKey();</span>
+<span class="fc" id="L151">				int rides = entry.getValue().getRides();</span>
+<span class="fc" id="L152">				stringBuilder.append(id);</span>
+<span class="fc" id="L153">				stringBuilder.append(&quot;,&quot;);</span>
+<span class="fc" id="L154">				stringBuilder.append(rides);</span>
+<span class="fc" id="L155">				writer.write(stringBuilder.toString());</span>
+<span class="fc" id="L156">				writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L157">			}</span>
+<span class="fc" id="L158">			writer.close();</span>
+<span class="nc" id="L159">		} catch (IOException e) {</span>
+<span class="nc" id="L160">			e.printStackTrace();</span>
+<span class="fc" id="L161">		}</span>
+<span class="fc" id="L162">	}</span>
+
+	private void outputHour(String header) {
+<span class="fc" id="L165">		File file = new File(&quot;hour.csv&quot;);</span>
+		//List&lt;Map.Entry&lt;String, Hour&gt;&gt; list = new ArrayList&lt;&gt;(hourMap.entrySet());
+<span class="fc" id="L167">		Iterator&lt;Map.Entry&lt;Integer, Hour&gt;&gt; iterator = hourMap.entrySet().iterator();</span>
+		try {
+<span class="fc" id="L169">			BufferedWriter writer = Files.newBufferedWriter(Paths.get(file.getPath()));</span>
+<span class="fc bfc" id="L170" title="All 2 branches covered.">			while(iterator.hasNext()) {</span>
+<span class="fc" id="L171">				Map.Entry&lt;Integer, Hour&gt; entry = iterator.next();</span>
+<span class="fc" id="L172">				writer.write(&quot;Hour&quot; + entry.getValue().getHour());</span>
+<span class="fc" id="L173">				writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L174">				writer.write(header);</span>
+<span class="fc" id="L175">				writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L176">				Hour hour = entry.getValue();</span>
+<span class="fc" id="L177">				Map&lt;Integer, Integer&gt; map = hour.getMap();</span>
+<span class="fc" id="L178">				List&lt;Map.Entry&lt;Integer, Integer&gt;&gt; list = new ArrayList&lt;&gt;(map.entrySet());</span>
+<span class="fc" id="L179">				Collections.sort(list, new Comparator&lt;Map.Entry&lt;Integer, Integer&gt;&gt;() {</span>
+					@Override
+					public int compare(Map.Entry&lt;Integer, Integer&gt; o1, Map.Entry&lt;Integer, Integer&gt; o2) {
+<span class="fc" id="L182">						return o2.getValue() - o1.getValue();</span>
+					}
+				});
+<span class="fc" id="L185">				int count = 0;</span>
+<span class="fc" id="L186">				Iterator&lt;Map.Entry&lt;Integer, Integer&gt;&gt; iterator1 = list.iterator();</span>
+<span class="pc bpc" id="L187" title="1 of 2 branches missed.">				while(iterator1.hasNext()) {</span>
+<span class="fc" id="L188">					Map.Entry&lt;Integer, Integer&gt; entry1 = iterator1.next();</span>
+<span class="fc" id="L189">					StringBuilder stringBuilder = new StringBuilder();</span>
+<span class="fc" id="L190">					stringBuilder.append(entry1.getKey());</span>
+<span class="fc" id="L191">					stringBuilder.append(&quot; &quot;);</span>
+<span class="fc" id="L192">					stringBuilder.append(entry1.getValue());</span>
+<span class="fc" id="L193">					writer.write(stringBuilder.toString());</span>
+<span class="fc" id="L194">					writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L195">					count++;</span>
+<span class="fc bfc" id="L196" title="All 2 branches covered.">					if(count == 10) break;</span>
+<span class="fc" id="L197">				}</span>
+<span class="fc" id="L198">				writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L199">				writer.write(&quot;\n&quot;);</span>
+<span class="fc" id="L200">			}</span>
+<span class="fc" id="L201">			writer.close();</span>
+<span class="nc" id="L202">		} catch (IOException e) {</span>
+<span class="nc" id="L203">			e.printStackTrace();</span>
+<span class="fc" id="L204">		}</span>
+
+
+<span class="fc" id="L207">	}</span>
+
+	private void checkSkier(int skierId, int liftId) {
+<span class="fc bfc" id="L210" title="All 2 branches covered.">		if(skierMap.containsKey(skierId)) {</span>
+<span class="fc" id="L211">			Skier skier = skierMap.get(skierId);</span>
+<span class="fc" id="L212">			skier.increaseVertical(liftId);</span>
+<span class="fc" id="L213">			skierMap.put(skierId, skier);</span>
+<span class="fc" id="L214">		}</span>
+		else {
+<span class="fc" id="L216">			Skier skier = new Skier(skierId);</span>
+<span class="fc" id="L217">			skier.increaseVertical(liftId);</span>
+<span class="fc" id="L218">			skierMap.put(skierId, skier);</span>
+		}
+<span class="fc" id="L220">	}</span>
+
+	private void checkLift(int liftId) {
+<span class="fc bfc" id="L223" title="All 2 branches covered.">		if(liftMap.containsKey(liftId)) {</span>
+<span class="fc" id="L224">			Lift lift = liftMap.get(liftId);</span>
+<span class="fc" id="L225">			lift.addRide();</span>
+<span class="fc" id="L226">			liftMap.remove(liftId);</span>
+<span class="fc" id="L227">			liftMap.put(liftId, lift);</span>
+<span class="fc" id="L228">		}</span>
+		else {
+<span class="fc" id="L230">			Lift lift = new Lift(liftId);</span>
+<span class="fc" id="L231">			lift.addRide();</span>
+<span class="fc" id="L232">			liftMap.put(liftId, lift);</span>
+		}
+<span class="fc" id="L234">	}</span>
+
+	private void checkSection(int section, int liftId) {
+<span class="fc bfc" id="L237" title="All 2 branches covered.">		if(hourMap.containsKey(section)) {</span>
+<span class="fc" id="L238">			Hour hour = hourMap.get(section);</span>
+<span class="fc" id="L239">			hour.addLift(liftId);</span>
+<span class="fc" id="L240">		}</span>
+		else {
+<span class="fc" id="L242">			Hour hour = new Hour(section);</span>
+<span class="fc" id="L243">			hour.addLift(liftId);</span>
+<span class="fc" id="L244">			hourMap.put(section, hour);</span>
+		}
+<span class="fc" id="L246">	}</span>
+
+	private int getSection(int time) {
+<span class="fc bfc" id="L249" title="All 2 branches covered.">		if(time &lt;= 60) {</span>
+<span class="fc" id="L250">			return 1;</span>
+		}
+<span class="fc bfc" id="L252" title="All 2 branches covered.">		else if(time &lt;= 120) {</span>
+<span class="fc" id="L253">			return 2;</span>
+		}
+<span class="fc bfc" id="L255" title="All 2 branches covered.">		else if(time &lt;= 180) {</span>
+<span class="fc" id="L256">			return 3;</span>
+		}
+<span class="fc bfc" id="L258" title="All 2 branches covered.">		else if(time &lt;= 240) {</span>
+<span class="fc" id="L259">			return 4;</span>
+		}
+<span class="fc bfc" id="L261" title="All 2 branches covered.">		else if(time &lt;= 300) {</span>
+<span class="fc" id="L262">			return 5;</span>
+		}
+		else {
+<span class="fc" id="L265">			return 6;</span>
+		}
+	}
+	public static void main(String[] args) {
+		try {
+<span class="nc" id="L270">			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in, &quot;UTF-8&quot;));</span>
+			String line;
+<span class="nc bnc" id="L272" title="All 2 branches missed.">			if((line=bufferedReader.readLine()) != null) {</span>
+<span class="nc" id="L273">				SkiDataProcessor skiDataProcessor = new SkiDataProcessor();</span>
+<span class="nc" id="L274">				skiDataProcessor.process(line);</span>
+<span class="nc" id="L275">				skiDataProcessor.output();</span>
+<span class="nc" id="L276">				int concurrent = 1;</span>
+<span class="nc" id="L277">				skiDataProcessor.process(line, concurrent);</span>
+<span class="nc" id="L278">				skiDataProcessor.output(concurrent);</span>
+<span class="nc" id="L279">			}</span>
+			else {
+<span class="nc" id="L281">				throw  new NullPointerException();</span>
+			}
+<span class="nc" id="L283">		} catch (UnsupportedEncodingException e) {</span>
+<span class="nc" id="L284">			e.printStackTrace();</span>
+<span class="nc" id="L285">		} catch (IOException e) {</span>
+<span class="nc" id="L286">			e.printStackTrace();</span>
+<span class="nc" id="L287">		}</span>
+<span class="nc" id="L288">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>

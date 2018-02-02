@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.3.5" timestamp="2017-11-13T10:14:58.572">
+<file name="/Users/wangxiao/Desktop/cs5010/assignment3 copy 2/src/main/java/edu/neu/ccs/cs5010/Address.java">
+<violation beginline="8" endline="8" begincolumn="20" endcolumn="25" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Address" variable="Street" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Street' starts with uppercase character.
+</violation>
+<violation beginline="9" endline="9" begincolumn="20" endcolumn="23" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Address" variable="City" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'City' starts with uppercase character.
+</violation>
+<violation beginline="10" endline="10" begincolumn="20" endcolumn="25" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Address" variable="County" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'County' starts with uppercase character.
+</violation>
+<violation beginline="11" endline="11" begincolumn="20" endcolumn="24" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Address" variable="State" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'State' starts with uppercase character.
+</violation>
+<violation beginline="12" endline="12" begincolumn="20" endcolumn="22" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Address" variable="Zip" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Zip' starts with uppercase character.
+</violation>
+</file>
+<file name="/Users/wangxiao/Desktop/cs5010/assignment3 copy 2/src/main/java/edu/neu/ccs/cs5010/Customer.java">
+<violation beginline="8" endline="8" begincolumn="20" endcolumn="28" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Customer" variable="FirstName" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'FirstName' starts with uppercase character.
+</violation>
+<violation beginline="9" endline="9" begincolumn="20" endcolumn="27" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Customer" variable="LastName" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'LastName' starts with uppercase character.
+</violation>
+<violation beginline="10" endline="10" begincolumn="21" endcolumn="28" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Customer" variable="Location" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Location' starts with uppercase character.
+</violation>
+<violation beginline="11" endline="11" begincolumn="20" endcolumn="30" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Customer" variable="PhoneNumber" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'PhoneNumber' starts with uppercase character.
+</violation>
+<violation beginline="12" endline="12" begincolumn="20" endcolumn="24" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Customer" variable="Email" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Email' starts with uppercase character.
+</violation>
+<violation beginline="13" endline="13" begincolumn="20" endcolumn="26" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Customer" variable="Rewards" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Rewards' starts with uppercase character.
+</violation>
+</file>
+<file name="/Users/wangxiao/Desktop/cs5010/assignment3 copy 2/src/main/java/edu/neu/ccs/cs5010/EmailGenerator.java">
+<violation beginline="16" endline="16" begincolumn="29" endcolumn="39" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="FirstNameNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'FirstNameNo' is not all capitals.
+</violation>
+<violation beginline="17" endline="17" begincolumn="29" endcolumn="38" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="LastNameNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'LastNameNo' is not all capitals.
+</violation>
+<violation beginline="18" endline="18" begincolumn="29" endcolumn="36" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="StreetNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'StreetNo' is not all capitals.
+</violation>
+<violation beginline="19" endline="19" begincolumn="29" endcolumn="34" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="CityNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'CityNo' is not all capitals.
+</violation>
+<violation beginline="20" endline="20" begincolumn="29" endcolumn="36" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="CountyNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'CountyNo' is not all capitals.
+</violation>
+<violation beginline="21" endline="21" begincolumn="29" endcolumn="35" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="StateNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'StateNo' is not all capitals.
+</violation>
+<violation beginline="22" endline="22" begincolumn="29" endcolumn="33" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="ZipNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'ZipNo' is not all capitals.
+</violation>
+<violation beginline="23" endline="23" begincolumn="29" endcolumn="33" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="PhoNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'PhoNo' is not all capitals.
+</violation>
+<violation beginline="24" endline="24" begincolumn="29" endcolumn="35" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="EmailNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'EmailNo' is not all capitals.
+</violation>
+<violation beginline="25" endline="25" begincolumn="29" endcolumn="37" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" variable="RewardsNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables that are final and static should be all capitals, 'RewardsNo' is not all capitals.
+</violation>
+<violation beginline="34" endline="34" begincolumn="14" endcolumn="20" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="createFileDir" variable="OutFile" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'OutFile' starts with uppercase character.
+</violation>
+<violation beginline="56" endline="56" begincolumn="16" endcolumn="17" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="getTemplateEmail" variable="ls" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like ls
+</violation>
+<violation beginline="74" endline="74" begincolumn="16" endcolumn="28" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="TemplateEmail" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'TemplateEmail' starts with uppercase character.
+</violation>
+<violation beginline="75" endline="75" begincolumn="16" endcolumn="20" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="Email" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Email' starts with uppercase character.
+</violation>
+<violation beginline="76" endline="76" begincolumn="17" endcolumn="29" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="DepartPattern" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'DepartPattern' starts with uppercase character.
+</violation>
+<violation beginline="77" endline="77" begincolumn="17" endcolumn="27" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="DestPattern" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'DestPattern' starts with uppercase character.
+</violation>
+<violation beginline="78" endline="78" begincolumn="17" endcolumn="29" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="DepartMatcher" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'DepartMatcher' starts with uppercase character.
+</violation>
+<violation beginline="79" endline="79" begincolumn="17" endcolumn="27" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="DestMatcher" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'DestMatcher' starts with uppercase character.
+</violation>
+<violation beginline="82" endline="82" begincolumn="20" endcolumn="29" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="DepartCity" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'DepartCity' starts with uppercase character.
+</violation>
+<violation beginline="84" endline="84" begincolumn="20" endcolumn="27" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="DestCity" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'DestCity' starts with uppercase character.
+</violation>
+<violation beginline="87" endline="87" begincolumn="21" endcolumn="32" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="EmailPattern" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'EmailPattern' starts with uppercase character.
+</violation>
+<violation beginline="88" endline="88" begincolumn="21" endcolumn="32" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="EmailMatcher" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'EmailMatcher' starts with uppercase character.
+</violation>
+<violation beginline="91" endline="91" begincolumn="20" endcolumn="23" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="Date" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Date' starts with uppercase character.
+</violation>
+<violation beginline="92" endline="92" begincolumn="22" endcolumn="30" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="ToReplace" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'ToReplace' starts with uppercase character.
+</violation>
+<violation beginline="94" endline="94" begincolumn="22" endcolumn="27" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="matchEmail" variable="ToFill" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'ToFill' starts with uppercase character.
+</violation>
+<violation beginline="115" endline="115" begincolumn="20" endcolumn="25" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="saveEmail" variable="Writer" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Writer' starts with uppercase character.
+</violation>
+<violation beginline="116" endline="116" begincolumn="16" endcolumn="20" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="saveEmail" variable="Email" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Email' starts with uppercase character.
+</violation>
+<violation beginline="149" endline="149" begincolumn="18" endcolumn="21" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="mailAutomation" variable="Info" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Info' starts with uppercase character.
+</violation>
+<violation beginline="154" endline="154" begincolumn="17" endcolumn="21" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="EmailGenerator" method="mailAutomation" variable="CusNo" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'CusNo' starts with uppercase character.
+</violation>
+</file>
+<file name="/Users/wangxiao/Desktop/cs5010/assignment3 copy 2/src/main/java/edu/neu/ccs/cs5010/Generator.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="41" rule="ImportFromSamePackage" ruleset="Import Statements" package="edu.neu.ccs.cs5010" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="34" rule="UnusedImports" ruleset="Import Statements" package="edu.neu.ccs.cs5010" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.text.SimpleDateFormat'
+</violation>
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="22" rule="UnusedImports" ruleset="Import Statements" package="edu.neu.ccs.cs5010" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.util.Date'
+</violation>
+<violation beginline="46" endline="46" begincolumn="16" endcolumn="22" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Generator" method="getInput" variable="DirName" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'DirName' starts with uppercase character.
+</violation>
+<violation beginline="47" endline="47" begincolumn="16" endcolumn="27" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Generator" method="getInput" variable="TemplateFile" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'TemplateFile' starts with uppercase character.
+</violation>
+<violation beginline="48" endline="48" begincolumn="16" endcolumn="20" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Generator" method="getInput" variable="Event" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Event' starts with uppercase character.
+</violation>
+<violation beginline="58" endline="58" begincolumn="16" endcolumn="24" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Generator" method="getInput" variable="InputLine" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'InputLine' starts with uppercase character.
+</violation>
+<violation beginline="60" endline="60" begincolumn="17" endcolumn="25" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Generator" method="getInput" variable="EvPattern" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'EvPattern' starts with uppercase character.
+</violation>
+<violation beginline="63" endline="63" begincolumn="17" endcolumn="25" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Generator" method="getInput" variable="EvMatcher" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'EvMatcher' starts with uppercase character.
+</violation>
+<violation beginline="77" endline="102" begincolumn="18" endcolumn="13" rule="IfElseStmtsMustUseBraces" ruleset="Braces" package="edu.neu.ccs.cs5010" class="Generator" method="getInput" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/braces.html#IfElseStmtsMustUseBraces" priority="3">
+Avoid using if...else statements without curly braces
+</violation>
+</file>
+</pmd>

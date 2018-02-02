@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,Skier,0,52,0,6,0,14,0,7,0,4
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,LiftThread,33,134,6,8,1,31,4,5,0,2
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,HourThread,3,206,0,12,2,50,0,8,0,2
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,SkiDataProcessor,77,697,4,30,34,176,4,26,1,12
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,SkierThread,18,189,4,16,1,40,4,9,0,3
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,Hour.new Comparator() {...},6,6,0,0,1,1,1,1,1,1
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,Lift,0,22,0,0,0,8,0,4,0,4
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,SkierThread.new Comparator() {...},0,16,0,0,0,2,0,2,0,2
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,SkiDataProcessor.new Comparator() {...},0,16,0,0,0,2,0,2,0,2
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,HourThread.new Comparator() {...},0,16,0,0,0,2,0,2,0,2
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,Hour,0,66,0,2,0,13,0,5,0,4
+Assignment for class CS5010,edu.neu.ccis.cs5010.assignment7,SkiDataProcessor.new Comparator() {...},0,16,0,0,0,2,0,2,0,2
